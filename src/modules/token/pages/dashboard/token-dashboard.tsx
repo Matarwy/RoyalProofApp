@@ -92,17 +92,17 @@ export const TokenDashboardComponent: React.FC = () => {
 
                 }
             ).catch(
-                // e => {
-                //     Swal.fire({
-                //         title: 'Oops!',
-                //         text: 'This is embarrassing but something went wrong and we are trying to fix it!',
-                //         icon: 'error',
-                //         confirmButtonText: 'Go Back',
-                //         willClose: () => {
-                //             navigate('/')
-                //         },
-                //     })
-                // }
+                e => {
+                    Swal.fire({
+                        title: 'Oops!',
+                        text: 'This is embarrassing but something went wrong and we are trying to fix it!',
+                        icon: 'error',
+                        confirmButtonText: 'Go Back',
+                        willClose: () => {
+                            navigate('/')
+                        },
+                    })
+                }
             );
     }
 
@@ -118,8 +118,8 @@ export const TokenDashboardComponent: React.FC = () => {
     return <Container>
         <MainSection>
             <TokenMainCardComponent
-                loading={tokenData?.basicInfo === undefined && <div className='loading'> <Spin /></div>}>
-            </TokenMainCardComponent>
+                loading={tokenData?.basicInfo === undefined && <div className='loading'> <Spin /></div>}
+            />
             {
                 tokenData?.basicInfo?.SpyWolfAudit !== undefined &&
                 <Card title={`Trust ${tokenData?.level} Award`}>

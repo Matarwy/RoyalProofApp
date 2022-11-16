@@ -21,7 +21,7 @@ import { ApplicationContext } from './core/routes/providers/application.provider
 import SearchAdressInput from './modules/components/search-address/search-address';
 import moment from 'moment';
 import TickerComponent from './modules/components/ticker/ticker';
-
+import Logo from './assets/core/spywolf_logo.svg'
 import mobileLogo from './assets/core/mobile-logo.svg'
 import { HomeProvider } from './core/routes/providers/home.provider';
 
@@ -88,7 +88,7 @@ function App() {
 
               <CNavbarBrand style={{ width: '100%' }}>
                 <a style={{ display: 'flex', width: 'fit-content' }} href="/#/">
-                  <img alt="Logo" src="https://spywolf.network/assets/SpyWolf_Network_Logo.svg" className="brand-logo h-lg-40px" />
+                  <img alt="Logo" src={Logo} className="brand-logo h-lg-40px" />
                   <img className="brand-logo mobile" src={mobileLogo} alt="" />
                 </a>
                 <div className="togglers">
@@ -103,14 +103,6 @@ function App() {
                     onClick={toggleNavbar}
                   />
                   <div className="getaudited" style={{ display: 'flex', columnGap: '10px', alignItems: 'center' }}>
-                    <CNavItem key="2000" style={{ listStyle: 'none' }}>
-                      <Link
-                        to="/request-audit">
-                        <CNavLink className="menu-item menu-lg-down-accordion me-lg-1 menu-link py-3 menu-title" target="_blank" active>
-                          Get Audit + KYC
-                        </CNavLink>
-                      </Link>
-                    </CNavItem>
                     <Button
                       onClick={() => setVisibleModal(true)}
                       className="submitButton" type="primary"
@@ -126,39 +118,37 @@ function App() {
             </CNavbarBrand>
             <CCollapse className="navbar-collapse" visible={navbarOpen}>
               <CNavbarNav>
-                <Popover content={'get up to 20% rewards on your next $SPY purchase'} >
-                  <Badge count="NEW" offset={[-15, 7]} style={{ fontSize: '10px', lineHeight: "19px", height: '18px', minHeight: '18px' }} status='success'>
-                    <CNavItem key="1">
-                      <Link
-                        onClick={toggleNavbar}
-                        to="/charity">
-                        <CNavLink style={{ fontSize: '13px' }} className="menu-item menu-lg-down-accordion me-lg-1 menu-link py-3 menu-title" active>
-                          Got Scammed?
+                <CNavItem key="1">
+                  <Popover content={'List Ico for free'} >
+                    <Badge count="NEW" offset={[-15, 1]} style={{ fontSize: '10px', lineHeight: "19px", height: '18px', minHeight: '18px' }} status='success'>
+                      {/*<Link*/}
+                      {/*  onClick={toggleNavbar}*/}
+                      {/*  to="/request-audit">*/}
+                        {/*<CNavLink className="menu-item menu-lg-down-accordion me-lg-1 menu-link py-3 menu-title" target="_blank" active>*/}
+                        {/*  Get Audit + KYC*/}
+                        {/*</CNavLink>*/}
+                        <CNavLink target='__blank' href="https://icolisting.live">
+                          ICO Listing
                         </CNavLink>
-                      </Link>
-                    </CNavItem>
-                  </Badge>
-                </Popover>
+                      {/*</Link>*/}
+                    </Badge>
+                  </Popover>
+                </CNavItem>
                 <CNavItem key="2">
-                  <Badge count="NEW" offset={[-15, 1]} style={{ fontSize: '10px', lineHeight: "19px", height: '18px', minHeight: '18px' }} status='success'>
-                    {/*<Link*/}
-                    {/*  onClick={toggleNavbar}*/}
-                    {/*  to="/request-audit">*/}
-                      {/*<CNavLink className="menu-item menu-lg-down-accordion me-lg-1 menu-link py-3 menu-title" target="_blank" active>*/}
-                      {/*  Get Audit + KYC*/}
-                      {/*</CNavLink>*/}
-                      <CNavLink target='__blank' href="https://t.me/Joe_SpyWolf">
-                        Get Audit + KYC
-                      </CNavLink>
-                    {/*</Link>*/}
-                  </Badge>
+                  <Popover content={'contact admin on telegram'} >
+                      {/*<Link*/}
+                      {/*  onClick={toggleNavbar}*/}
+                      {/*  to="/request-audit">*/}
+                        {/*<CNavLink className="menu-item menu-lg-down-accordion me-lg-1 menu-link py-3 menu-title" target="_blank" active>*/}
+                        {/*  Get Audit + KYC*/}
+                        {/*</CNavLink>*/}
+                        <CNavLink target='__blank' href="https://t.me/">
+                          Contact
+                        </CNavLink>
+                      {/*</Link>*/}
+                  </Popover>
                 </CNavItem>
-                <CNavItem key="3">
-                  <CNavLink target='__blank' href="https://pancakeswap.finance/swap?outputCurrency=0xc2d0f6b7513994a1ba86cef3aac181a371a4ca0c">
-                    Buy $SPY
-                  </CNavLink>
-                </CNavItem>
-                <CNavItem key="4"
+                <CNavItem key="3"
                 >
                   <Link
                     onClick={toggleNavbar}
@@ -169,17 +159,17 @@ function App() {
                   </Link>
                 </CNavItem>
                 <div className="inline-icons" style={{ display: 'flex' }}>
-                  <CNavItem key="5" className="social">
+                  <CNavItem key="4" className="social">
                     <CNavLink href="https://twitter.com/SpyWolfNetwork" target='__blank'>
                       <FaTwitter color={'#a1a5b7'} fontSize={20} />
                     </CNavLink>
                   </CNavItem>
-                  <CNavItem key="6" className="social">
+                  <CNavItem key="5" className="social">
                     <CNavLink href="https://t.me/SpyWolfOfficial" target='__blank'>
                       <FaTelegram color={'#a1a5b7'} fontSize={20} />
                     </CNavLink>
                   </CNavItem>
-                  <CNavItem key="7" className="social">
+                  <CNavItem key="6" className="social">
                     <CNavLink href="https://spywolf.medium.com/" target='__blank'>
                       <FaMedium color={'#a1a5b7'} fontSize={20} />
                     </CNavLink>

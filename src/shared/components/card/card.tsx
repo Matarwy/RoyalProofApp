@@ -1,8 +1,10 @@
 // Dependencies
-import React, { useEffect } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { Container } from './card.style';
 
-const Card: React.FC<{min?: boolean}>= (props) => {
+const Card: React.FC<{
+    children: ReactNode;min?: boolean
+}>= (props) => {
     const classes: string = `${props?.min ? 'min' : ''} card card-flush mb-10`;
 
     useEffect(() => { }, []);
