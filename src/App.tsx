@@ -21,7 +21,7 @@ import { ApplicationContext } from './core/routes/providers/application.provider
 import SearchAdressInput from './modules/components/search-address/search-address';
 import moment from 'moment';
 import TickerComponent from './modules/components/ticker/ticker';
-import Logo from './assets/core/spywolf_logo.svg'
+import Logo from './assets/core/RoyalProoflogo.png'
 import mobileLogo from './assets/core/mobile-logo.svg'
 import { HomeProvider } from './core/routes/providers/home.provider';
 
@@ -135,15 +135,15 @@ function App() {
                   </Popover>
                 </CNavItem>
                 <CNavItem key="2">
-                  <Popover content={'contact admin on telegram'} >
+                  <Popover content={'contact us on telegram'} >
                       {/*<Link*/}
                       {/*  onClick={toggleNavbar}*/}
                       {/*  to="/request-audit">*/}
                         {/*<CNavLink className="menu-item menu-lg-down-accordion me-lg-1 menu-link py-3 menu-title" target="_blank" active>*/}
                         {/*  Get Audit + KYC*/}
                         {/*</CNavLink>*/}
-                        <CNavLink target='__blank' href="https://t.me/">
-                          Contact
+                        <CNavLink target='__blank' href="https://t.me/ICOLiveAdmin">
+                          Contact Telegram
                         </CNavLink>
                       {/*</Link>*/}
                   </Popover>
@@ -160,20 +160,20 @@ function App() {
                 </CNavItem>
                 <div className="inline-icons" style={{ display: 'flex' }}>
                   <CNavItem key="4" className="social">
-                    <CNavLink href="https://twitter.com/SpyWolfNetwork" target='__blank'>
+                    <CNavLink href="https://twitter.com/icolisting_live" target='__blank'>
                       <FaTwitter color={'#a1a5b7'} fontSize={20} />
                     </CNavLink>
                   </CNavItem>
                   <CNavItem key="5" className="social">
-                    <CNavLink href="https://t.me/SpyWolfOfficial" target='__blank'>
+                    <CNavLink href="https://t.me/ICOListing_Live" target='__blank'>
                       <FaTelegram color={'#a1a5b7'} fontSize={20} />
                     </CNavLink>
                   </CNavItem>
-                  <CNavItem key="6" className="social">
-                    <CNavLink href="https://spywolf.medium.com/" target='__blank'>
+                  {/* <CNavItem key="6" className="social">
+                    <CNavLink href="https://medium.com/" target='__blank'>
                       <FaMedium color={'#a1a5b7'} fontSize={20} />
                     </CNavLink>
-                  </CNavItem>
+                  </CNavItem> */}
                 </div>
 
                 <Button onClick={() => setVisibleModal(true)} className="submitButton submit-desktop" type="primary" size='large' style={{ color: '#152B36 !important', fontSize: '14px', fontWeight: '500' }} >Submit</Button>
@@ -191,7 +191,7 @@ function App() {
           <div className="container-xxl d-flex flex-column flex-md-row align-items-center justify-content-between">
             <div className="text-dark order-2 order-md-1">
               <span className="text-muted fw-bold me-1">© {moment().year()}</span>
-              <a href="https://spywolf.co" target="_blank" className="text-gray-800 text-hover-primary">SpyWolf</a>
+              <a href="https://icolisting.live/" target="_blank" className="text-gray-800 text-hover-primary">RoyalProof</a>
             </div>
             <ul className="menu menu-gray-600 menu-hover-primary fw-bold order-1">
 
@@ -201,7 +201,7 @@ function App() {
                 </Link>
               </li>
               <li className="menu-item">
-                <a href="mailto:audit@spywolf.co" target="_blank" className="menu-link px-2">Contact Us</a>
+                <a href="mailto:support@royalproof.net" target="_blank" className="menu-link px-2">Contact Us</a>
               </li>
             </ul>
           </div>

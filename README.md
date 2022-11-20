@@ -16,4 +16,4 @@ Features:
 - Profiles and gamification  (Coming soon)
 - And much more!
 
-start researching now at https://spywolf.network. 
+start researching now at https://royalproof.net/. 

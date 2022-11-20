@@ -52,9 +52,9 @@ const LatestScamsItem: React.FC<{ token: FeaturedToken, imageLoading?: boolean }
 
             <InfoContainer>
                 <Link to={'token/' + props?.token?.address}>
-                    <a className='text-dark  fw-bolder mb-1 fs-6'>{props?.token?.name}</a>
+                    <a className='text-dark  fw-bolder mb-1 fs-6'>{props?.token?.currency?.name}</a>
                 </Link>
-                <span className=' symbol text-muted fw-bold d-block' >{props?.token?.symbol}</span>
+                <span className=' symbol text-muted fw-bold d-block' >{props?.token?.currency?.symbol}</span>
             </InfoContainer>
 
             <ReleaseContainer>

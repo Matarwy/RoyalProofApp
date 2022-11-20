@@ -12,16 +12,9 @@ import PotentialScamsItem from '../../components/potential-scams-item/potential-
 import RecentlyAddedItem from '../../components/recently-added-item/recently-added-item';
 import { FeaturedToken } from '../models/featured-token';
 import { CardGrid, Container } from './home.style';
-import scambanner from '../../../assets/ads/spywolf-reward-ad.png'
+import scambanner from '../../../assets/ads/IcoListingAd.jpg'
 
-import cookiesaleBanner from '../../../assets/ads/banner-cookiesale.jpg'
-import shopit from '../../../assets/ads/shop-it.jpeg'
-import xpad from '../../../assets/ads/xpad.png'
-import poorquack from '../../../assets/ads/banner-poorquack.jpg'
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-
-import spywolfad from '../../../assets/ads/spywolf_ads_cookiesale.jpeg'
-
+import { Link} from 'react-router-dom';
 import SolidToolbar from '../../components/solid-toolbar/solid-toolbar';
 
 
@@ -61,12 +54,8 @@ export const HomeComponent: React.FC = () => {
     const [adBanners, setAdBanners] = useState<{ src: string, url: string }[]>(
         [
             {
-                src: cookiesaleBanner,
-                url: 'https://cookiesale.app/'
-            },
-            {
-                src: xpad,
-                url: 'https://www.busdx.com/'
+                src: "",
+                url: ''
             }
         ]
     );
@@ -162,7 +151,7 @@ export const HomeComponent: React.FC = () => {
     }
 
     const filterUpcomingByVerified = (token: FeaturedToken) => {
-        return verifiedOnly ? token?.alldata?.tag === 'VERIFIED' : true;
+        return verifiedOnly ? token?.tag === 'VERIFIED' : true;
     }
     const filterByPast = (token: FeaturedToken) => {
         return pastOnly ? moment.utc(token?.AMADate as string).hour(0).minute(0).second(0).diff(moment.utc().hour(0).minute(0).second(0)) < 0 : true;
@@ -266,13 +255,13 @@ export const HomeComponent: React.FC = () => {
                         hideOnSinglePage={false}
                         defaultPageSize={11}
                         current={potentialScamsPage}
-                        total={potentialScams?.filter((token: FeaturedToken) => token.name.toLowerCase().includes(potentialtNameFilter.toLowerCase())).length}
+                        total={potentialScams?.filter((token: FeaturedToken) => token.currency?.name.toLowerCase().includes(potentialtNameFilter.toLowerCase())).length}
                         onChange={(page: number) => updatePage('potential', page)}
                     ></Pagination>]}
             >
                 <div className="content-wrapper">
                     {
-                        potentialScams?.filter((token: FeaturedToken) => token.name.toLowerCase().includes(potentialtNameFilter.toLowerCase())).slice((potentialScamsPage - 1) * 11, potentialScamsPage *11)
+                        potentialScams?.filter((token: FeaturedToken) => token.currency?.name.toLowerCase().includes(potentialtNameFilter.toLowerCase())).slice((potentialScamsPage - 1) * 11, potentialScamsPage *11)
                             .map((token: FeaturedToken) =>
                                 <PotentialScamsItem token={token} imageLoading={potentialImageLoading}></PotentialScamsItem>
                             )
@@ -360,13 +349,13 @@ export const HomeComponent: React.FC = () => {
                             current={latestScamsPage}
                             defaultPageSize={6}
                             defaultCurrent={1}
-                            total={latestScams?.filter((token: FeaturedToken) => token.name.toLowerCase().includes(latestNameFilter.toLowerCase())).length}
+                            total={latestScams?.filter((token: FeaturedToken) => token.currency?.name.toLowerCase().includes(latestNameFilter.toLowerCase())).length}
                             onChange={(page: number) => updatePage('latest', page)}
                         ></Pagination>]}
                 >
                     <div className="scam-wrapper">
                         {
-                            latestScams?.filter((token: FeaturedToken) => token.name.toLowerCase().includes(latestNameFilter.toLowerCase())).slice((latestScamsPage - 1) * 6, latestScamsPage * 6).map((token: FeaturedToken) =>
+                            latestScams?.filter((token: FeaturedToken) => token.currency?.name.toLowerCase().includes(latestNameFilter.toLowerCase())).slice((latestScamsPage - 1) * 6, latestScamsPage * 6).map((token: FeaturedToken) =>
                                 <LatestScamsItem token={token} imageLoading={latestImageLoading}></LatestScamsItem>)
                         }
                         {

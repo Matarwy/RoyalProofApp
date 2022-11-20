@@ -23,7 +23,7 @@ const SearchAdressInput: React.FC = () => {
 
     const validadeAddress = (address: string) => {
 
-        return axios.get(`https://nhlm8489e3.execute-api.us-east-2.amazonaws.com/prod/tokenorwalletinfo/${address}`)
+        return axios.get(`https://api.royalproof.net/network/tokeninfo/${address}`)
 
     }
     const navigate = useNavigate();
@@ -63,9 +63,9 @@ const SearchAdressInput: React.FC = () => {
                             <span style={{
                                 color: '#181c32',
                                 fontWeight: 600
-                            }}>{token.name}</span></span>
+                            }}>{token.currency.name}</span></span>
                         ,
-                        value: token.name,
+                        value: token.currency.name,
                         address: token.address
                     }))
                 )
@@ -94,7 +94,7 @@ const SearchAdressInput: React.FC = () => {
                     ...persistedPotentialScams, ...persistedLatestScams, ...persistedFeaturedTokens, ...persistedAmaTokens,
                     ...persistedRecentlyAddedTokens
                 ]
-                const token = allTokens.find(persisted => persisted.name.toLowerCase().includes(inputRef.state.value.toLowerCase()) && persisted.name.toLowerCase() === inputRef.state.value.toLowerCase())
+                const token = allTokens.find(persisted => persisted.currency.name.toLowerCase().includes(inputRef.state.value.toLowerCase()) && persisted.currency.name.toLowerCase() === inputRef.state.value.toLowerCase())
                 if (token) {
                     navigate(`token/${token.address}`);
                     setAddressLoading(false);
@@ -140,7 +140,7 @@ const SearchAdressInput: React.FC = () => {
                     validadeAddress(addr).then(
                         ({ data }) => {
                             setAddressLoading(false);
-                            const addressCheckResponse: AddressCheckResponseModel | null = data.smartContractInfo;
+                            const addressCheckResponse: AddressCheckResponseModel | null = data;
                             if (addressCheckResponse == null) {
                                 throw new Error('Invalid Token Address');
                             }
@@ -193,8 +193,8 @@ const SearchAdressInput: React.FC = () => {
                 ...persistedPotentialScams, ...persistedLatestScams, ...persistedFeaturedTokens, ...persistedAmaTokens,
                 ...persistedRecentlyAddedTokens
             ]
-            const token = allTokens.find(persisted => persisted.name.toLowerCase()
-                .includes(inputRef.state.value.toLowerCase()) && persisted.name.toLowerCase() === inputRef.state.value.toLowerCase())
+            const token = allTokens.find(persisted => persisted.currency.name.toLowerCase()
+                .includes(inputRef.state.value.toLowerCase()) && persisted.currency.name.toLowerCase() === inputRef.state.value.toLowerCase())
             if (token) {
                 navigate(`token/${token.address}`);
                 setAddressLoading(false);
@@ -240,7 +240,7 @@ const SearchAdressInput: React.FC = () => {
                 validadeAddress(addr).then(
                     ({ data }) => {
                         setAddressLoading(false);
-                        const addressCheckResponse: AddressCheckResponseModel | null = data.smartContractInfo;
+                        const addressCheckResponse: AddressCheckResponseModel | null = data;
                         if (addressCheckResponse == null) {
                             throw new Error('Invalid Token Address');
                         }
@@ -291,7 +291,7 @@ const SearchAdressInput: React.FC = () => {
                 ...persistedPotentialScams, ...persistedLatestScams, ...persistedFeaturedTokens, ...persistedAmaTokens,
                 ...persistedRecentlyAddedTokens
             ]
-            const token = allTokens.find(persisted => persisted.name.toLowerCase().includes(value.toLowerCase()) && persisted.name.toLowerCase() === value.toLowerCase())
+            const token = allTokens.find(persisted => persisted.currency.name.toLowerCase().includes(value.toLowerCase()) && persisted.currency.name.toLowerCase() === value.toLowerCase())
             if (token) {
                 navigate(`token/${token.address}`);
                 setAddressLoading(false);
@@ -337,7 +337,7 @@ const SearchAdressInput: React.FC = () => {
                 validadeAddress(addr).then(
                     ({ data }) => {
                         setAddressLoading(false);
-                        const addressCheckResponse: AddressCheckResponseModel | null = data.smartContractInfo;
+                        const addressCheckResponse: AddressCheckResponseModel | null = data;
                         if (addressCheckResponse == null) {
                             throw new Error('Invalid Token Address');
                         }
@@ -382,7 +382,7 @@ const SearchAdressInput: React.FC = () => {
                 }
                 onSelect={
                     (option) => {
-                        const token = stateAllTokens.find(token => token.name.toLowerCase() === option.toLowerCase())
+                        const token = stateAllTokens.find(token => token.currency.name.toLowerCase() === option.toLowerCase())
                         navigate(`token/${token.address}`)
                         inputRef.setValue('')
                     }

@@ -93,12 +93,11 @@ const AmaTokenItem: React.FC<{ token: FeaturedToken, imageLoading?: boolean }> =
                         }
                     </LogoContainer>
             }
-
         </Link>
         <Link to={`token/${props?.token?.address}`}>
             <InfoContainer className={`${applyOpacity}`}>
-                <a onClick={handleNavigate} className='text-dark fw-bolder text-hover-primary mb-1 fs-6'>{props?.token?.name}</a>
-                <span className=' symbol text-muted fw-bold d-block' >{props?.token?.symbol}</span>
+                <a onClick={handleNavigate} className='text-dark fw-bolder text-hover-primary mb-1 fs-6'>{props?.token?.currency?.name}</a>
+                <span className=' symbol text-muted fw-bold d-block' >{props?.token?.currency?.symbol}</span>
             </InfoContainer>
         </Link>
         <Link to={`token/${props?.token?.address}`}>
@@ -132,7 +131,7 @@ const AmaTokenItem: React.FC<{ token: FeaturedToken, imageLoading?: boolean }> =
 
                 {
                     diffDays >= 0 ?
-                        <Button className={isEqualDate ? 'today' : ''} href={'https://t.me/SpyWolfOfficial'} type="ghost" style={{ background: '' }} target={'__blank'}> <MdKeyboardVoice size={25} />  </Button>
+                        <Button className={isEqualDate ? 'today' : ''} href={'https://t.me/ICOListing_Live'} type="ghost" style={{ background: '' }} target={'__blank'}> <MdKeyboardVoice size={25} />  </Button>
                         :
                         <Button type="ghost" target={'__blank'} href={props.token.AMALink}> <FaPlay size={15} />  </Button>
 

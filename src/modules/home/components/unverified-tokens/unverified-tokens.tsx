@@ -20,7 +20,7 @@ const UnverifiedTokens: React.FC = () => {
     }, []);
 
     const fetchTokens = () => {
-        axios.get('https://nhlm8489e3.execute-api.us-east-2.amazonaws.com/prod/tokens_info/audited').then(
+        axios.get('https://api.royalproof.net/network/audited').then(
             res => {
                 const auditedResponse: AuditedTokenResponseModel = res.data;
                 const _auditedTokens = auditedResponse.content.Items.map(tokens => new AuditedToken(tokens));

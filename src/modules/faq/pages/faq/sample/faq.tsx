@@ -17,12 +17,12 @@ const Faq: React.FC = () => {
             <div className="grid">
                 <div className="section">
                     <h2 className='section-title text-gray-800 fw-bolder mb-4'>
-                        About SpyWolf Network
+                        About RoyalProof
                     </h2>
 
                     <Collapse   ghost>
                         <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="What is the goal of this portal?" key="1">
-                            <p>SpyWolf Network aims to educate and help crypto investors during their
+                            <p>RoyalProof aims to educate and help crypto investors during their
                                 research process to avoid falling into the hands of crypto criminals.
                                 From weekly tips to exposing multi-token scams and even projects we consider trusted.
                                 Our full-time researchers will take care of all the due diligence for you!
@@ -65,7 +65,7 @@ const Faq: React.FC = () => {
 
                 <div className="section ">
                     <h2 className='section-title text-gray-800 fw-bolder mb-4'>
-                        Audits by SpyWolf
+                        Audits by RoyalProof
                     </h2>
 
                     <Collapse ghost>
@@ -78,7 +78,7 @@ const Faq: React.FC = () => {
 
                             </p>
                         </CollapsePanel>
-                        <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="What aspects of a project does SpyWolf review?" key="2">
+                        <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="What aspects of a project does RoyalProof review?" key="2">
                             <p>
                                 Our easy-to-read audit report contains every aspect of a project that will allow an investor to make an informed decision before investing.
                             </p>
@@ -106,53 +106,27 @@ const Faq: React.FC = () => {
                             </p>
                         </CollapsePanel>
                         <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="I'm ready to audit my project. How do I contact you?" key="4">
-                            <p>You can contact our team at audit@spywolf.co or by joining our <a className="primary-link" href="https://t.me/SpyWolfOfficial" target={'__blank'}>Telegram group.</a></p>
+                            <p>You can contact our team at support@royalproof.net or by joining our <a className="primary-link" href="https://t.me/ICOListing_Live" target={'__blank'}>Telegram group.</a></p>
                         </CollapsePanel>
 
                     </Collapse>
 
                 </div>
 
-
                 <div className="section">
                     <h2 className='section-title text-gray-800 fw-bolder mb-4'>
-                        $SPY Token
+                        About RoyalProof
                     </h2>
 
                     <Collapse ghost>
-                        <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="What is the SPY token for?" key="1">
-                            <p>When you hold SPY, you are directly contributing into the search, tracking and potentially stopping of crypto criminals and their future projects as well as helping alert the community about potential scams and educate them on how to identify them, while getting a financial incentive for holding long-term.</p>
-                        </CollapsePanel>
-                        <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="Do I get rewards for holding SPY?" key="2">
-                            <p>Yes! You will earn 3% in BNB. By simply holding $SPY you will earn a share of the BNB rewards pool (Once every hour), proportional to the amount of $SPY you hold.</p>
-                        </CollapsePanel>
-                        <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="What are some upcoming associated projects?" key="3">
-                            <p>We have a scam investigation pool platform coming out soon as well as a launchpad and an educational platform. All set to come out this year!</p>
-                        </CollapsePanel>
-                        <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="How do I buy SPY?" key="4">
-                            <p>You can currently buy $SPY on the PancakeSwap exchange. <a className="primary-link" href="https://pancakeswap.finance/swap?outputCurrency=0xC2D0f6b7513994A1Ba86CEf3AAc181a371A4CA0c" target={'__blank'}>
-                                Click here
-
-                            </a> to buy.</p>
-                        </CollapsePanel>
-                    </Collapse>
-
-                </div>
-
-                <div className="section">
-                    <h2 className='section-title text-gray-800 fw-bolder mb-4'>
-                        About SpyWolf
-                    </h2>
-
-                    <Collapse ghost>
-                        <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="What is SpyWolf's background?" key="1">
-                            <p>SpyWolf is a team of crypto security experts that have been performing audits for projects for several months in order to ensure safety in the crypto space.
+                        <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="What is RoyalProof's background?" key="1">
+                            <p>RoyalProof is a team of crypto security experts that have been performing audits for projects for several months in order to ensure safety in the crypto space.
                             </p>
                             <p>
                                 Due to our experience identifying red flags and potential scams, we decided to start our own "safe space" for the community to seek help and learn how not to fall for scams while allowing them to invest in safer projects. After our channel grew significantly, we decided to scale our project to reach as many people as possible that could use all the help we were providing, while also providing some unique tools to help them invest safely.
                             </p>
                         </CollapsePanel>
-                        <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="What services does SpyWolf provide?" key="2">
+                        <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="What services does RoyalProof provide?" key="2">
                             <p>We provide the following services:
                             </p>
                             <p>
@@ -170,24 +144,14 @@ const Faq: React.FC = () => {
                             </p>
                         </CollapsePanel>
                         <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="Who are some of your partners?" key="3">
-                            <p>We are currently official security partners of <a className="primary-link" href="https://www.pinksale.finance/#/" target={'__blank'}>
-                                Pinksale
-
-                            </a>, <a className="primary-link" href="https://www.nexusecosystem.io/" target={'__blank'}>
-                                Nexus Ecosystem
-
-                            </a>, <a className="primary-link" href="https://www.busdx.com/" target={'__blank'}>
-                                BUSDX
-
-                            </a> and <a className="primary-link" href="https://www.assuredefi.io/" target={'__blank'}>
-                                Assure
-
+                            <p>We are currently official security partners of <a className="primary-link" href="https://icoListing.live" target={'__blank'}>
+                                ICO Listing
                             </a>.</p>
 
                         </CollapsePanel>
-                        <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="How can I learn more about SpyWolf?" key="4">
+                        <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="How can I learn more about RoyalProof?" key="4">
                             <p>You can visit our website at <a className="primary-link" href="" target={'__blank'}>
-                                spywolf.co
+                                royalproof.net
 
                             </a></p>
                         </CollapsePanel>

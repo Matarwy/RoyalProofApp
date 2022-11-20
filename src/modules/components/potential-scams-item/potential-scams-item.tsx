@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { FeaturedToken } from '../../home/models/featured-token';
 // import PoweredBy from '../powered-by/powered-by';
 import { ActionsContainer, Container, InfoContainer, LogoContainer, ReleaseDate, TrustLevelContainer } from './potential-scams-item.style';
-import nophoto from '../../../assets/core/no-photo.png'
+import nophoto from '../../../assets/core/no-photo.png';
 
 const tagNewConstraint = -14;
 
@@ -49,8 +49,8 @@ const PotentialScamsItem: React.FC<{ token: FeaturedToken, imageLoading?: boolea
         <Link to={`/token/${props.token.address}`}>
 
             <InfoContainer>
-                <a className='text-dark fw-bolder primary-link mb-1 fs-6' >{props?.token?.name}</a>
-                <span className=' symbol text-muted fw-bold d-block' >{props?.token?.symbol}</span>
+                <a className='text-dark fw-bolder primary-link mb-1 fs-6' >{props?.token?.currency?.name}</a>
+                <span className=' symbol text-muted fw-bold d-block' >{props?.token?.currency?.symbol}</span>
             </InfoContainer>
         </Link>
         <Link to={`/token/${props.token.address}`}>
@@ -78,7 +78,7 @@ const PotentialScamsItem: React.FC<{ token: FeaturedToken, imageLoading?: boolea
                         </Tag>
                     )}
                 {
-                    !props.token.alldata?.KYC &&
+                    !props.token.kyc &&
                     <Tag
                         style={{ whiteSpace: 'pre-wrap' }}
                         color={'red'}
@@ -91,12 +91,12 @@ const PotentialScamsItem: React.FC<{ token: FeaturedToken, imageLoading?: boolea
         </Link>
         <ActionsContainer>
             {
-                props?.token?.website &&
-                <Button type="ghost" href={`${props?.token?.website}`} target={'__blank'}> <LaptopOutlined />  </Button>
+                props?.token?.socialLinks?.website &&
+                <Button type="ghost" href={`${props?.token?.socialLinks?.website}`} target={'__blank'}> <LaptopOutlined />  </Button>
             }
             {
-                props?.token?.telegram &&
-                <Button type="ghost" href={props?.token?.telegram} target={'__blank'}><FaTelegram color={'#a1a5b7'} fontSize={20} /></Button>
+                props?.token?.socialLinks?.telegram &&
+                <Button type="ghost" href={props?.token?.socialLinks?.telegram} target={'__blank'}><FaTelegram color={'#a1a5b7'} fontSize={20} /></Button>
             }
 
         </ActionsContainer>

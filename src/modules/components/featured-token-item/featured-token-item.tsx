@@ -30,13 +30,13 @@ const FeaturedTokenItem: React.FC<{ token: FeaturedToken, imageLoading?: boolean
             </LogoContainer>
             <InfoContainer>
                 <Link to={`/token/${props.token.address}`}>
-                    <a className='text-dark fw-bolder text-hover-primary mb-1 fs-6' >{props?.token?.name}</a>
+                    <a className='text-dark fw-bolder text-hover-primary mb-1 fs-6' >{props?.token?.currency?.name}</a>
                 </Link>
-                <span className=' symbol text-muted fw-bold d-block' >{props?.token?.symbol}</span>
+                <span className=' symbol text-muted fw-bold d-block' >{props?.token?.currency?.symbol}</span>
             </InfoContainer>
             <KYCBadge>
                 {
-                    props.token.alldata?.KYC &&
+                    props.token?.kyc &&
                     <Tag color="purple">
                         KYC
                     </Tag>
@@ -49,7 +49,7 @@ const FeaturedTokenItem: React.FC<{ token: FeaturedToken, imageLoading?: boolean
                 <span className='text-dark fw-bolder d-block fs-7'>{props?.token?.releaseDate}</span>
             </ReleaseContainer>
             <TrustLevelContainer>
-                <Popover content={<span>Awarded SpyWolf's Certificate of Trust: {props?.token?.trustLevel ? props?.token?.trustLevel : 'L   evel 1'}</span>} >
+                <Popover content={<span>Awarded RoyalProof's Certificate of Trust: {props?.token?.trustLevel ? props?.token?.trustLevel : 'L   evel 1'}</span>} >
                     <Tag
                         color={(trustLevelBgColor as any)[props?.token?.trustLevel ? props?.token?.trustLevel : 'Level 1']}
                         style={{ color: (trustLevelTextColor as any)[props?.token?.trustLevel ? props?.token?.trustLevel : 'Level 1'], fontWeight: 600 }}

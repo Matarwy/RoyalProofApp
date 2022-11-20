@@ -72,10 +72,10 @@ export const HomeProvider = (props: any) => {
 
     }, []);
 
-    const fetchCacheID = () => axios.get('https://nhlm8489e3.execute-api.us-east-2.amazonaws.com/prod/tokens_info/force_update')
+    const fetchCacheID = () => axios.get('https://api.royalproof.net/network/force_update')
 
     const fetchFeaturedTokens = () => {
-        axios.get('https://nhlm8489e3.execute-api.us-east-2.amazonaws.com/prod/tokens_info/TRUSTED').then(
+        axios.get('https://api.royalproof.net/network/trusted').then(
             ({ data }) => {
                 const featuredTokensResponse: FeaturedTokensResponse = data;
                 const featuredTokens = featuredTokensResponse?.content?.Items.map(
@@ -90,12 +90,15 @@ export const HomeProvider = (props: any) => {
     }
 
     const fetchRecentlyAdded = () => {
-        axios.get('https://nhlm8489e3.execute-api.us-east-2.amazonaws.com/prod/tokens_info/upcomings').then(
+        axios.get('https://api.royalproof.net/network/upcomings').then(
             ({ data }) => {
                 const recentlyAddedResponse: FeaturedTokensResponse = data;
+                console.log("no error top");
                 const recentlyAdded = recentlyAddedResponse?.content?.Items.map(
+                    
                     tokenResponse => new FeaturedToken(tokenResponse)
                 )
+                console.log("no error bottom");
                 setRecentlyAdded(recentlyAdded)
                 setAllTokens([...allTokens, ...recentlyAdded])
                 persistToken('recentlyAdded', recentlyAdded);
@@ -103,12 +106,11 @@ export const HomeProvider = (props: any) => {
             }
 
         )
-
     }
 
 
     const fetchAmaAdded = () => {
-        axios.get('https://nhlm8489e3.execute-api.us-east-2.amazonaws.com/prod/tokens_info/amas').then(
+        axios.get('https://api.royalproof.net/network/amas').then(
             ({ data }) => {
                 const amaTokensResponse: FeaturedTokensResponse = data;
                 const amaTokens = amaTokensResponse?.content?.Items.map(
@@ -126,7 +128,7 @@ export const HomeProvider = (props: any) => {
 
 
     const fetchLatestScams = () => {
-        axios.get('https://nhlm8489e3.execute-api.us-east-2.amazonaws.com/prod/tokens_info/SCAM').then(
+        axios.get('https://api.royalproof.net/network/scam').then(
             ({ data }) => {
                 const latestScamsResponse: FeaturedTokensResponse = data;
                 const latestScams = latestScamsResponse?.content?.Items?.map(
@@ -144,7 +146,7 @@ export const HomeProvider = (props: any) => {
 
 
     const fetchPotentialScams = () => {
-        axios.get('https://nhlm8489e3.execute-api.us-east-2.amazonaws.com/prod/tokens_info/not_audited').then(
+        axios.get('https://api.royalproof.net/network/not_audited').then(
             ({ data }) => {
                 const potentialScamsResponse: FeaturedTokensResponse = data;
                 const potentialScams = potentialScamsResponse?.content?.Items?.map(

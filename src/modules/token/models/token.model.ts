@@ -1,207 +1,66 @@
-import { FeaturedToken, FeaturedTokenDTO } from "../../home/models/featured-token";
-
-export interface Currency {
-    symbol: string;
-    name: string;
-    decimals: number;
-    tokenType: string;
-}
-
-export interface Currency2 {
-    symbol: string;
-}
-
-export interface TokenStatisticsInfo {
-    currency: Currency2;
-    amount: number;
-    count: number;
-    days: number;
-    sender_count: number;
-    receiver_count: number;
-    min_date: string;
-    max_date: string;
-}
-
-export interface StatisticsInfo {
-    tokenStatisticsInfo: TokenStatisticsInfo;
-}
-
-export interface TopHolder {
-    TokenHolderAddress: string;
-    TokenHolderQuantity: any;
-}
-
-export interface PresaleInfo {
-    link?: string;
-    releaseDate?: string;
-    hardcap?: string;
-    isWhiteListed?: false
-    presaleDate?: string;
-    presaleLink?: string;
-    softcap?: string;
-}
-
-export interface SpyWolfAudit {
-    certificateOfTrustURL: string;
-    level: number;
-    certificateOfTrustGif: string;
-}
-
-export interface OtherCompanyAuditModel {
-    auditLink: string;
-    companyName: string;
-}
-
-export interface Item {
-    website: string;
-    presaleInfo: Partial<PresaleInfo>;
-    symbol: string;
-    address: string;
-    discord: string;
-    logo: string;
-    name: string;
-    telegram: string;
-    votes: number;
-    twitter: string;
-    SpyWolfAudit: SpyWolfAudit;
-    isPresaleOnly: boolean;
-    isFairlaunch: boolean;
-    isPriviateAndPresale: boolean;
-    description: string;
-    auditCertificateLink: string;
-    trustLevel: string;
-    status: string;
-    deployedDate: string;
-    releaseDate: string;
-    tag: any;
-    OtherCompanyAudit?: OtherCompanyAuditModel;
-    quickAudit?: string;
-    scamReason: string[];
-    scamReasonTooltip?: string;
-}
-
-export interface Content {
-    Items: Item[];
-    Count: number;
-    ScannedCount: number;
-}
-
-export interface TokenBasicInfo {
-    statusCode: string;
-    content: Content;
-}
-
-export interface SmartContractInfo {
-    contractType: string;
-    currency: Currency;
-    statisticsInfo: StatisticsInfo;
-    isVerified: boolean;
-    topHolders: TopHolder[];
-    liquidityBalance: number;
-    totalSupply: string;
-    tokensBurnt: number;
-    marketCapInBNB: number;
-    marketCapInDollar: number;
-    tokenBasicInfo: TokenBasicInfo;
-}
-
-export interface BNBPriceInDollar {
-    symbol: string;
-    address: string;
-    priceInDollar: number;
-}
-
-export interface TokenPrice {
-    symbol: string;
-    address: string;
-    priceInBNB: number;
-}
-
-export interface TokenResponseObject {
-    smartContractInfo: SmartContractInfo;
-    BNBPriceInDollar: BNBPriceInDollar;
-    tokenPrice: TokenPrice;
-}
-
-
-
+import { FeaturedTokensResponse,FeaturedToken, FeaturedTokenDTO } from "../../home/models/featured-token";
 export class Token {
-    level?: string;
-    isVerified?: boolean;
-    lastchange?: string;
-    contractAddress?: string;
-    basicInfo?: Partial<Item>;
-    statisticInfo?: TokenStatisticsInfo;
-    topHolders?: TopHolder[];
-    currency?: Currency;
-    quickAudit?: string;
+    basicInfo?: Partial<FeaturedTokenDTO>;
 
-    constructor(tokenResponse?: TokenResponseObject | null, featuredToken?: FeaturedTokenDTO, isUpcoming?: boolean) {
+    constructor(tokenResponse?: FeaturedTokensResponse | null, featuredToken?: FeaturedTokenDTO, isUpcoming?: boolean) {
         if (tokenResponse) {
-            this.level = 'Upcoming';
-
-            const hasAudit = tokenResponse?.smartContractInfo?.tokenBasicInfo?.content?.Items.some(item => {
+            const hasAudit = tokenResponse?.content?.Items.some(item => {
                 return item.OtherCompanyAudit !== undefined
             })
 
-            const otherAudit: Item | undefined = tokenResponse?.smartContractInfo?.tokenBasicInfo?.content?.Items.filter(item => {
+            const otherAudit: FeaturedTokenDTO | undefined = tokenResponse?.content?.Items.filter(item => {
                 return item.OtherCompanyAudit !== undefined
             })[0]
 
-            this.lastchange = 'empty'
-            this.contractAddress = tokenResponse?.tokenPrice?.address;
-            this.basicInfo = (hasAudit && tokenResponse?.smartContractInfo?.tokenBasicInfo?.content?.Items[0].SpyWolfAudit === undefined) ? otherAudit : tokenResponse?.smartContractInfo?.tokenBasicInfo?.content?.Items[0];
-            this.topHolders = tokenResponse?.smartContractInfo?.topHolders;
-            this.currency = tokenResponse?.smartContractInfo?.currency;
-            this.isVerified = tokenResponse?.smartContractInfo?.isVerified;
-            this.level = this.basicInfo?.trustLevel;
-            this.statisticInfo = tokenResponse?.smartContractInfo?.statisticsInfo?.tokenStatisticsInfo;
-            if (tokenResponse?.smartContractInfo.tokenBasicInfo.content.Items[0].quickAudit) {
-                this.quickAudit = tokenResponse?.smartContractInfo.tokenBasicInfo.content.Items[0].quickAudit;
-            }
+            this.basicInfo = (hasAudit && tokenResponse?.content?.Items[0].royalProofAudit === undefined) ? otherAudit : tokenResponse?.content?.Items[0];
 
             if (isUpcoming) {
                 this.basicInfo = {
-                    website: featuredToken?.website as string,
-                    telegram: featuredToken?.telegram as string,
+                    socialLinks: featuredToken?.socialLinks,
                     presaleInfo: featuredToken?.presaleInfo as any,
-                    symbol: featuredToken?.symbol as any,
                     address: featuredToken?.address,
-                    twitter: featuredToken?.twitter,
-                    discord: featuredToken?.discord,
                     description: featuredToken?.description,
-                    name: featuredToken?.name,
                     logo: featuredToken?.logo,
-                    deployedDate: featuredToken?.deployedDate
+                    deployedDate: featuredToken?.deployedDate,
+                    currency: {
+                        decimals: featuredToken?.currency?.decimals as number,
+                        name: featuredToken?.currency?.name as string,
+                        symbol: featuredToken?.currency?.symbol as string,
+                        tokenType: featuredToken?.currency?.tokenType as string
+                    },
+                    OtherCompanyAudit: featuredToken?.OtherCompanyAudit,
+                    royalProofAudit: featuredToken?.royalProofAudit,
                 }
             }
         }
-
     }
 
     convertFrom(featuredToken: FeaturedToken) {
-        this.basicInfo = {...featuredToken}
-        this.basicInfo.logo = featuredToken.logoPicture
-        this.basicInfo.name = featuredToken.name
-        this.basicInfo.symbol = featuredToken.symbol
-    }
-}
-
-export class UpComingToken {
-    level?: string;
-    isVerified?: boolean;
-    lastchange?: string;
-    contractAddress?: string;
-    basicInfo?: Item;
-    statisticInfo?: TokenStatisticsInfo;
-    topHolders?: TopHolder[];
-    currency?: Currency;
-
-    constructor(tokenResponse: null, featuredToken?: FeaturedTokenDTO, isUpcoming?: boolean) {
-        if (!isUpcoming) {
-        }
-
-
+        this.basicInfo = {
+            kyc: featuredToken.kyc,
+            socialLinks: featuredToken.socialLinks,
+            trustLevel: featuredToken.trustLevel,
+            presaleInfo: featuredToken.presaleInfo,
+            address: featuredToken.address,
+            logo: featuredToken.logoPicture,
+            votes: featuredToken.votes,
+            description: featuredToken.description,
+            scamReason: featuredToken.scamReason,
+            deployedDate: featuredToken.deployedDate,
+            scamReasonTooltip: featuredToken.scamReasonTooltip,
+            tag: featuredToken.tag,
+            releaseDate: featuredToken.releaseDate,
+            scamDate: featuredToken.scamDate,
+            AMADate: featuredToken.AMADate,
+            AMALink: featuredToken.AMALink,
+            savingTime: featuredToken.savingTime,
+            status: featuredToken.status,
+            approvalStatus: featuredToken.approvalStatus,
+            royalProofAudit: featuredToken.royalProofAudit,
+            OtherCompanyAudit: featuredToken.OtherCompanyAudit,
+            currency: featuredToken.currency,
+            isVerified: featuredToken.isVerified,
+        }  
     }
 }
 

@@ -59,17 +59,17 @@ const RecentlyAddedItem: React.FC<{ token: FeaturedToken, imageLoading?: boolean
             }
 
             <InfoContainer>
-                <a onClick={handleNavigate} className='text-dark fw-bolder text-hover-primary mb-1 fs-6'>{props?.token?.name}</a>
-                <span className=' symbol text-muted fw-bold d-block' >{props?.token?.symbol}</span>
+                <a onClick={handleNavigate} className='text-dark fw-bolder text-hover-primary mb-1 fs-6'>{props?.token?.currency?.name}</a>
+                <span className=' symbol text-muted fw-bold d-block' >{props?.token?.currency?.symbol}</span>
             </InfoContainer>
-            {/* <KYCBadge>
+            <Badge>
                 {
-                    props.token.alldata?.KYC &&
+                    props.token.kyc &&
                     <Tag color="purple">
                         KYC
                     </Tag>
                 }
-            </KYCBadge> */}
+            </Badge>
             <ReleaseContainer>
                 <span className='released-title text-muted fw-bold d-block fs-8'>
                     Release
@@ -94,18 +94,18 @@ const RecentlyAddedItem: React.FC<{ token: FeaturedToken, imageLoading?: boolean
                 </span>
             </ReleaseContainer>
             <TrustLevelContainer>
-                <Popover className="tag" content={<span>Want to become a trusted project? Contact SpyWolf for an audit!</span>} >
+                <Popover className="tag" content={<span>Want to become a trusted project? Contact RoyalProof for an audit!</span>} >
                     <Tag
-                        color={props.token.alldata?.tag === 'UNVERIFIED' ? 'red' : 'green'}
+                        color={props.token.tag === 'UNVERIFIED' ? 'red' : 'green'}
                     >
-                        {`${props?.token?.alldata?.tag[0]?.toUpperCase() as any + props?.token?.alldata?.tag?.slice(1).toLowerCase() as any}`}
+                        {`${props?.token?.tag[0]?.toUpperCase() as any + props?.token?.tag?.slice(1).toLowerCase() as any}`}
                     </Tag>
 
 
                 </Popover>
                 <div className="icon">
                     {
-                        props.token.alldata?.tag === 'UNVERIFIED' ? (
+                        props.token.tag === 'UNVERIFIED' ? (
                             <AiFillWarning className="unverified"></AiFillWarning>
                         ) : (
                             <IoCheckmarkDoneCircleSharp className="verified" />

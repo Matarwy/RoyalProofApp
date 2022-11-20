@@ -2,8 +2,7 @@
 // Dependencies
 import { Input } from 'antd';
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import scambanner from '../../../assets/ads/spywolf-reward-ad.png'
+import scambanner from '../../../assets/ads/IcoListingAd.jpg'
 import { Container } from './card-title-subtitle.style';
 
 const CardTitleSubtitle: React.FC<{
@@ -16,9 +15,7 @@ const CardTitleSubtitle: React.FC<{
 
         {
             props.banner !== undefined &&
-            <Link to="/charity">
-                < a > <img className="scam-title-banner" width="100%" src={scambanner} alt="" /></a>
-            </Link>
+                < a href='https://icolisting.live' target="_blank" rel="noreferrer"> <img className="scam-title-banner" width="100%" src={scambanner} alt="" /></a>
         }
         <div className="header">
             <h3 className="card-title align-items-start flex-column">

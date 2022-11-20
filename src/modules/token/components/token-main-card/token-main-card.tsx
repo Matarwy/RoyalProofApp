@@ -42,14 +42,13 @@ const TokenMainCardComponent: React.FC<{ loading: any }> = (props) => {
         axios.get('https://api.ipify.org?format=json').then(
             res => {
                 setUserIP(res.data.ip)
-                axios.post('https://nhlm8489e3.execute-api.us-east-2.amazonaws.com/prod/voting_data', {
+                axios.post('https://api.royalproof.net/submit/voteing_data', {
                     httpMethod: "POST",
-                    resourcePath: "/voting_data",
-                    ipAddress: res.data.ip
+                    ipAddress: res.data.ip,
                 }).then(
                     res => {
-                        window.sessionStorage.setItem('votes', JSON.stringify(res.data.content.Items));
-                        setAlreadyVoted(res.data.content.Items.some(item => item.token_address === tokenData?.basicInfo?.address))
+                        window.sessionStorage.setItem('votes', JSON.stringify(res.data.items));
+                        setAlreadyVoted(res.data.items.some(item => item.token_address === tokenData?.basicInfo?.address))
                     }
                 )
             }
@@ -69,16 +68,13 @@ const TokenMainCardComponent: React.FC<{ loading: any }> = (props) => {
                 res => {
                     const _votes = JSON.parse(window.sessionStorage.getItem('votes') as any);
 
-                    if (!_votes.some(vote => vote.token_address === tokenData.basicInfo?.address)) {
+                    if (!(_votes.some(vote => vote.tokenAddress === tokenData.basicInfo?.address))) {
                         setVotes(votes + 1)
-                        axios.post('https://nhlm8489e3.execute-api.us-east-2.amazonaws.com/prod/voting_data',
+                        axios.post('https://api.royalproof.net/submit/voting_data',
                             {
                                 httpMethod: "POST",
-                                resourcePath: "/voting_data",
                                 ipAddress: res.data.ip,
-                                tokenAddress: tokenData.basicInfo?.address,
-                                telegram: tokenData.basicInfo?.telegram,
-                                tag: tokenData.basicInfo?.tag
+                                tokenAddress: tokenData?.basicInfo?.address,
                             })
                             .then(() => {
                                 _votes.push({
@@ -129,7 +125,6 @@ const TokenMainCardComponent: React.FC<{ loading: any }> = (props) => {
         if (!alreadyVoted) {
             setAddingCaptcha(true)
             loadCaptchaEnginge(6);
-
         }
     }
 
@@ -172,7 +167,6 @@ const TokenMainCardComponent: React.FC<{ loading: any }> = (props) => {
     }
 
     return <Container className={`${(tokenData?.basicInfo?.trustLevel !== undefined || tokenData?.basicInfo?.tag) ? 'showRibbon' : 'hideRibbon'}`}>
-        {/* ${ tokenData?.basicInfo?.tag === 'UNVERIFED' ? 'UNVERIFIED' : ('Trust' + tokenData?.level)} */}
         <Badge.Ribbon
             style={
                 {
@@ -231,19 +225,19 @@ const TokenMainCardComponent: React.FC<{ loading: any }> = (props) => {
                 </div>}
                 <div className="social">
                     {
-                        tokenData?.basicInfo?.website &&
-                        <Button href={tokenData?.basicInfo?.website} target="_blank" type="primary"
+                        tokenData?.basicInfo?.socialLinks?.website &&
+                        <Button href={tokenData?.basicInfo?.socialLinks?.website} target="_blank" type="primary"
                             icon={<FaLaptop color={'white'} fontSize={20} />}
                             size={'large'} />
                     }
                     {
-                        tokenData?.basicInfo?.twitter &&
-                        <Button href={tokenData?.basicInfo?.twitter} target="_blank" type="primary" icon={<TwitterOutlined />} size={'large'} />
+                        tokenData?.basicInfo?.socialLinks?.twitter &&
+                        <Button href={tokenData?.basicInfo?.socialLinks?.twitter} target="_blank" type="primary" icon={<TwitterOutlined />} size={'large'} />
                     }
 
                     {
-                        tokenData?.basicInfo?.twitter &&
-                        <Button href={tokenData?.basicInfo?.telegram} target="_blank" type="primary" icon={
+                        tokenData?.basicInfo?.socialLinks?.telegram &&
+                        <Button href={tokenData?.basicInfo?.socialLinks?.telegram} target="_blank" type="primary" icon={
                             <FaTelegram color={'white'} fontSize={20} />
                         } size={'large'} />
                     }

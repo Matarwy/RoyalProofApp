@@ -14,7 +14,7 @@ const AddressInputComponent: React.FC<{ valid: any, valueChange }> = ({ valid, v
     const [addressLoading, setAddressLoading] = useState<boolean>(false);
 
     const validadeAddress = (address: string) => {
-        return axios.get(`https://nhlm8489e3.execute-api.us-east-2.amazonaws.com/prod/tokenorwalletinfo/${address}`)
+        return axios.get(`https://api.royalproof.net/network/tokeninfo/${address}`)
 
     }
 
@@ -70,7 +70,7 @@ const AddressInputComponent: React.FC<{ valid: any, valueChange }> = ({ valid, v
                     validadeAddress(addr).then(
                         ({ data }) => {
                             setAddressLoading(false);
-                            const addressCheckResponse: AddressCheckResponseModel | null = data.smartContractInfo;
+                            const addressCheckResponse: AddressCheckResponseModel | null = data;
                             if (addressCheckResponse == null) {
                                 valid(false);
                                 throw new Error('Invalid Token Address');
@@ -147,7 +147,7 @@ const AddressInputComponent: React.FC<{ valid: any, valueChange }> = ({ valid, v
                 validadeAddress(addr).then(
                     ({ data }) => {
                         setAddressLoading(false);
-                        const addressCheckResponse: AddressCheckResponseModel | null = data.smartContractInfo;
+                        const addressCheckResponse: AddressCheckResponseModel | null = data;
                         if (addressCheckResponse == null) {
                             valid(false);
                             throw new Error('Invalid Token Address');
@@ -225,7 +225,7 @@ const AddressInputComponent: React.FC<{ valid: any, valueChange }> = ({ valid, v
                 validadeAddress(addr).then(
                     ({ data }) => {
                         setAddressLoading(false);
-                        const addressCheckResponse: AddressCheckResponseModel | null = data.smartContractInfo;
+                        const addressCheckResponse: AddressCheckResponseModel | null = data;
                         if (addressCheckResponse == null) {
                             valid(false);
                             throw new Error('Invalid Token Address');

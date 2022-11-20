@@ -40,13 +40,13 @@ const TokenInfoHighlight: React.FC<{ loading: boolean }> = (props) => {
 
         <DashedCard>
             {
-                tokenData?.basicInfo?.name === undefined && <Spin />
+                tokenData?.basicInfo?.currency?.name === undefined && <Spin />
             }
             {
-                tokenData?.basicInfo?.name !== undefined &&
+                tokenData?.basicInfo?.currency?.name !== undefined &&
                 <div>
                     <h1 id="value" className='fs-1 fw-bolder text-gray-800 lh-1'>
-                        {tokenData?.basicInfo?.name ? tokenData?.basicInfo?.name : '-'}
+                        {tokenData?.basicInfo?.currency?.name ? tokenData?.basicInfo?.currency?.name : '-'}
                     </h1>
                     <span id="label" className='fs-6 fw-bold text-muted d-block lh-1 pt-2'>
                         Token Name
@@ -57,13 +57,13 @@ const TokenInfoHighlight: React.FC<{ loading: boolean }> = (props) => {
         </DashedCard>
         <DashedCard>
             {
-                tokenData?.basicInfo?.symbol === undefined && <Spin />
+                tokenData?.basicInfo?.currency?.symbol === undefined && <Spin />
             }
             {
-                tokenData?.basicInfo?.symbol !== undefined &&
+                tokenData?.basicInfo?.currency?.symbol !== undefined &&
                 <div>
                     <h1 id="value" className='fs-1 fw-bolder text-gray-800 lh-1'>
-                        {tokenData?.basicInfo?.symbol ? tokenData?.basicInfo?.symbol : '-'}
+                        {tokenData?.basicInfo?.currency?.symbol ? tokenData?.basicInfo?.currency?.symbol : '-'}
                     </h1>
                     <span id="label" className='fs-6 fw-bold text-muted d-block lh-1 pt-2'>
                         Symbol

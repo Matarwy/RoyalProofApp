@@ -3,6 +3,13 @@ export interface OtherCompanyAudit {
     companyName: string;
 }
 
+export interface Currency {
+    symbol: string;
+    name: string;
+    decimals: number;
+    tokenType: string;
+}
+
 export interface PresaleInfo {
     presaleLink: string;
     presaleDate: string;
@@ -11,19 +18,28 @@ export interface PresaleInfo {
     hardcap: string;
 }
 
-export interface AuditedTokenItemModel {
+export interface Socials {
+    telegram: string;
+    twitter: string;
     website: string;
-    symbol: string;
+    discord: string;
+}
+
+export interface RoyalProofAudit {
+    certificateOfTrustURL: string;
+    certificateOfTrustGif: string;
+}
+
+export interface AuditedTokenItemModel {
+    currency: Currency;
+    socialsLinks: Socials ;
     status: string;
     address: string;
     logo: string;
-    name: string;
     votes: number;
-    telegram: string;
-    twitter: string;
     releaseDate: string;
-    isFairlaunch: boolean;
     OtherCompanyAudit: OtherCompanyAudit;
+    RoyalProofAudit: RoyalProofAudit;
     tag: string;
     description: string;
     presaleInfo: PresaleInfo;
@@ -52,10 +68,10 @@ export class AuditedToken{
     constructor( incomingToken: AuditedTokenItemModel ){
         this.address = incomingToken.address;
         this.logoPicture = incomingToken.logo;
-        this.name = incomingToken.name;
-        this.symbol = incomingToken.symbol;
+        this.name = incomingToken.currency.name;
+        this.symbol = incomingToken.currency.symbol;
         this.tag = incomingToken.tag;
 
-        this.tooltipText = 'Want to be a trusted project? Contact SpyWolf for an audit!'
+        this.tooltipText = 'Want to be a trusted project? Contact RoyalProof for an audit!'
     }
 }

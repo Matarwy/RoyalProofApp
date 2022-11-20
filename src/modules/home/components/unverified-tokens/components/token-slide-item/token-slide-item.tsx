@@ -17,18 +17,18 @@ const TokenSlideItem: React.FC<{ token: Partial<FeaturedToken>, logoSize?: strin
                 </div>
             </Link>
             <Link to={'/token/' + props?.token?.address}>
-                <div className="name text-dark fw-bolder text-hover-primary mb-1 fs-6">{props.token.name}</div>
+                <div className="name text-dark fw-bolder text-hover-primary mb-1 fs-6">{props.token.currency?.name}</div>
 
             </Link>
-            <div className="symbol text-muted fs-6 fw-bold mt-1">{props.token.symbol}</div>
+            <div className="symbol text-muted fs-6 fw-bold mt-1">{props.token.currency?.symbol}</div>
             <div className="tag">
                 {
-                    props.token.alldata?.KYC &&
+                    props.token.kyc &&
                     <Tag color="purple">
                         KYC
                     </Tag>
                 }
-                <Popover content={(props?.token?.scamReasonTooltip ? props?.token?.scamReasonTooltip : 'Want to be a trusted project? Contact SpyWolf for an audit!')}>
+                <Popover content={(props?.token?.scamReasonTooltip ? props?.token?.scamReasonTooltip : 'Want to be a trusted project? Contact RoyalProof for an audit!')}>
                     <Tag color={props.tagColor}>
                         {'Audited'}
                     </Tag>

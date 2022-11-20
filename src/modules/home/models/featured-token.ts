@@ -1,42 +1,70 @@
 import { format, isValid, parseISO } from "date-fns";
 
-export interface PresaleInfo {
-    link: string;
-    presaleDate: string;
+export interface Currency {
+    symbol: string;
+    name: string;
+    decimals: number;
+    tokenType: string;
 }
 
-export interface FeaturedTokenDTO {
-    trustLevel: string;
-    website: string;
-    presaleInfo: PresaleInfo;
-    symbol: string;
-    isScam: string;
-    address: string;
-    discord: string;
-    logo: string;
-    name: string;
-    isPotencialScam: string;
+export interface Socials {
     telegram: string;
-    votes: number;
     twitter: string;
-    isRecentlyAdded: string;
-    isFeature: string;
-    isFairlaunch: boolean;
+    website: string;
+    discord: string;
+}
+
+export interface Category {
+    isScam: boolean;
+    isPotencialScam: boolean;
+    isRecentlyAdded: boolean;
+    isFeature: boolean;
+    isAma: boolean;
+    isAudit: boolean;
+}
+
+export interface RoyalProofAudit {
+    certificateOfTrustURL: string;
+    certificateOfTrustGif: string;
+}
+
+export interface OtherCompanyAuditModel {
+    auditLink: string;
+    companyName: string;
+}
+export interface PresaleInfo {
+    link?: string;
+    releaseDate?: string;
+    hardcap?: string;
+    presaleDate?: string;
+    presaleLink?: string;
+    softcap?: string;
+}
+export interface FeaturedTokenDTO {
+    category: Category;
+    socialLinks: Socials;
+    trustLevel: string;
+    presaleInfo: PresaleInfo;
+    address: string;
+    logo: string;
+    votes: number;
     description: string;
     scamReason: string[];
     deployedDate?: string;
     scamReasonTooltip?: string;
-    vettedBy: string;
     tag: string;
     releaseDate?: string;
     scamDate?: string;
     AMADate?: any;
     AMALink?: string;
-    savingTime?: string
-    KYC?: boolean;
-    isFairLaunch: boolean;
+    savingTime?: string;
     status: string;
     approvalStatus: string;
+    royalProofAudit: RoyalProofAudit;
+    OtherCompanyAudit?: OtherCompanyAuditModel;
+    currency: Currency;
+    isVerified: boolean;
+    kyc:boolean;
 }
 
 export interface Content {
@@ -50,52 +78,51 @@ export interface FeaturedTokensResponse {
     content: Content;
 }
 
-
-export interface PresaleInfo {
-    presaleLink: string;
-    presaleDate: string;
-    softcap: string;
-    hardcap: string;
-}
-
-
 export class FeaturedToken {
-    name: string;
-    symbol: string;
-    logoPicture: string;
+    kyc: boolean;
+    socialLinks: Socials;
     trustLevel: string;
+    presaleInfo: PresaleInfo;
     address: string;
+    logoPicture: string;
+    votes: number;
+    description: string;
     scamReason: string[];
-    telegram: string;
-    website: string;
+    deployedDate?: string;
     scamReasonTooltip?: string;
-    alldata?: FeaturedTokenDTO;
-    vettedBy: string
-    presaleDate?: string;
-    tag?: string;
+    tag: any;
     releaseDate?: string;
     scamDate?: string;
-    AMADate?: string;
+    AMADate?: any;
     AMALink?: string;
     savingTime?: string;
-    presaleInfo: PresaleInfo;
-    approvalStatus: string;
     status: string;
-    votes: number;
-    isFairlaunch: boolean;
-    description: string;
+    approvalStatus: string;
+    royalProofAudit: RoyalProofAudit;
+    OtherCompanyAudit?: OtherCompanyAuditModel;
+    currency: Currency;
+    isVerified: boolean;
 
     constructor(featuredTokenDTO: FeaturedTokenDTO) {
-        this.name = featuredTokenDTO?.name;
-        this.symbol = featuredTokenDTO?.symbol;
+        this.currency = featuredTokenDTO.currency;
+        this.socialLinks = featuredTokenDTO.socialLinks;
+        this.kyc = featuredTokenDTO.kyc;
+        this.isVerified = featuredTokenDTO.isVerified;
         this.logoPicture = featuredTokenDTO?.logo;
-        this.website = featuredTokenDTO?.website;
         this.presaleInfo = featuredTokenDTO?.presaleInfo;
         this.approvalStatus = featuredTokenDTO?.approvalStatus;
         this.votes = featuredTokenDTO?.votes;
         this.status = featuredTokenDTO?.status;
-        this.isFairlaunch = featuredTokenDTO?.isFairlaunch;
         this.description = featuredTokenDTO?.description;
+        this.royalProofAudit = featuredTokenDTO?.royalProofAudit;
+        this.OtherCompanyAudit = featuredTokenDTO?.OtherCompanyAudit;
+        this.trustLevel = featuredTokenDTO?.trustLevel;
+        this.address = featuredTokenDTO?.address;
+        this.scamReason = featuredTokenDTO?.scamReason;
+        this.socialLinks = featuredTokenDTO?.socialLinks;
+        this.scamReasonTooltip = featuredTokenDTO.scamReasonTooltip;
+        this.scamDate = featuredTokenDTO?.scamDate ? featuredTokenDTO?.scamDate : '';
+
         const date = parseISO(featuredTokenDTO?.releaseDate as string);
         if (date && isValid(date)) {
             this.releaseDate = format(date, 'PP').toString();
@@ -106,15 +133,14 @@ export class FeaturedToken {
         if (featuredTokenDTO.presaleInfo && featuredTokenDTO.presaleInfo.presaleDate) {
             const presaledate = parseISO(featuredTokenDTO?.presaleInfo.presaleDate as string);
             if (date && isValid(presaledate)) {
-                this.presaleDate = format(presaledate, 'PP').toString();
+                this.presaleInfo.presaleDate = format(presaledate, 'PP').toString();
             } else {
-                this.presaleDate = '';
+                this.presaleInfo.presaleDate = '';
             }
         }
 
         if (featuredTokenDTO.tag) {
-            this.tag = featuredTokenDTO.tag;
-
+            this.tag = featuredTokenDTO?.tag;
         }
         if (featuredTokenDTO.AMADate) {
             this.AMADate = featuredTokenDTO.AMADate;
@@ -128,15 +154,7 @@ export class FeaturedToken {
         if (featuredTokenDTO.AMALink) {
             this.AMALink = featuredTokenDTO.AMALink;
         }
-        this.trustLevel = featuredTokenDTO?.trustLevel;
-        this.address = featuredTokenDTO?.address;
-        this.scamReason = featuredTokenDTO?.scamReason;
-        this.website = featuredTokenDTO?.website;
-        this.telegram = featuredTokenDTO?.telegram;
-        this.scamReasonTooltip = featuredTokenDTO.scamReasonTooltip;
-        this.vettedBy = featuredTokenDTO.vettedBy;
-        this.scamDate = featuredTokenDTO?.scamDate ? featuredTokenDTO?.scamDate : '';
-        this.alldata = featuredTokenDTO;
+        
 
     }
 }

@@ -19,7 +19,7 @@ const TokenMainCardHeaderComponent: React.FC<{ info: Token }> = (props) => {
             </Tag>
         }
         <div className="text-container">
-            <span className='fw-bolder mb-1 fs-1 text-dark name'>{props?.info?.basicInfo?.name ? props?.info?.basicInfo?.name : ''}</span>
+            <span className='fw-bolder mb-1 fs-1 text-dark name'>{props?.info?.basicInfo?.currency?.name ? props?.info?.basicInfo?.currency?.name : ''}</span>
         </div>
     </Container>;
 };

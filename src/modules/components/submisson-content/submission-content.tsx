@@ -149,20 +149,32 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
             const formdata = tokenForm.getFieldsValue();
             let submitObj = {
                 httpMethod: "POST",
-                resourcePath: "/tokens_info/{category}/{value}",
-                isScam: false,
                 item: {
-                    telegram: formdata.telegram ? formdata.telegram : '',
-                    website: formdata.website ? formdata.website : '',
-                    symbol: formdata.symbol ? `$${formdata.symbol}` : '',
+                    socialsLinks: {
+                        telegram: formdata.telegram ? formdata.telegram : '',
+                        website: formdata.website ? formdata.website : '',
+                        twitter: formdata.twitter ? formdata.twitter : '',
+                        discord: formdata.discord ? formdata.discord : '',
+                    },
+                    currency: {
+                        symbol: formdata.symbol ? `$${formdata.symbol}` : '',
+                        name: formdata.name ? formdata.name : '',
+                        decimals: formdata.decimals ? formdata.decimals : 0,
+                        tokenType: formdata.tokenType ? formdata.tokenType : '',
+                    },
+                    category:{
+                        isScam: false,
+                        isPotencialScam: true,
+                        isRecentlyAdded: false,
+                        isFeature: false,
+                        isAma: false,
+                        isAudit: false,
+                    },
                     status: formdata.releaseDate._d > new Date() ? 'NOT LAUNCHED' : 'LAUNCHED',
                     address: formdata.address ? toChecksumAddress(formdata.address) : '',
                     logo: formdata.logo ? formdata.logo : '',
-                    name: formdata.name ? formdata.name : '',
                     votes: 0,
-                    twitter: formdata.twitter ? formdata.twitter : '',
                     releaseDate: formdata.releaseDate ? format(formdata.releaseDate._d, 'yyy-MM-dd') : '',
-                    isFairlaunch: formdata.presale ? false : true,
                     description: formdata.description ? formdata.description : ''
                 }
             }
@@ -172,18 +184,17 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
                     presaleLink: formdata.presalelink,
                     presaleDate: format(formdata.presaledate._d, 'yyy-MM-dd'),
                     softcap: formdata.softcap ? formdata.softcap : '',
-                    isWhiteListed: formdata.isWhiteListed,
                     hardcap: formdata.hardcap ? formdata.hardcap : ''
                 }
             }
             tokenForm.validateFields().then(
                 res => {
 
-                    axios.post('https://nhlm8489e3.execute-api.us-east-2.amazonaws.com/prod/tokens_info/submit', submitObj).then(
+                    axios.post('https://api.royalproof.net/submit', submitObj).then(
                         res => {
                             Swal.fire({
                                 title: 'Thank you for submiting a token  ',
-                                text: 'our team will review the request, once done you will see it on the platform,  now you will be redirected to the main page',
+                                text: 'our team will review the request, once done you will see it on the platform,  Please contact us on telegram for faster review',
                                 icon: 'success',
                                 timer: 5000,
                                 didClose: () => {
@@ -212,19 +223,32 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
             const formdata = scamForm.getFieldsValue();
             const submitObj = {
                 httpMethod: "POST",
-                resourcePath: "/tokens_info/{category}/{value}",
-                isScam: true,
                 item: {
-                    telegram: formdata.telegram ? formdata.telegram : '',
-                    website: formdata.website ? formdata.website : '',
-                    scamReasonTooltip: formdata.description ? formdata.description : '',
-                    symbol: formdata.symbol ? `$${formdata.symbol}` : '',
-                    status: formdata.releaseDate ? formdata.releaseDate > new Date() ? 'NOT LAUNCHED' : 'LAUNCHED' : 'LAUNCHED',
+                    socialsLinks: {
+                        telegram: formdata.telegram ? formdata.telegram : '',
+                        website: formdata.website ? formdata.website : '',
+                        twitter: formdata.twitter ? formdata.twitter : '',
+                        discord: formdata.discord ? formdata.discord : '',
+                    },
+                    currency: {
+                        symbol: formdata.symbol ? `$${formdata.symbol}` : '',
+                        name: formdata.name ? formdata.name : '',
+                        decimals: formdata.decimals ? formdata.decimals : 0,
+                        tokenType: formdata.tokenType ? formdata.tokenType : '',
+                    },
+                    category:{
+                        isScam: true,
+                        isPotencialScam: false,
+                        isRecentlyAdded: false,
+                        isFeature: false,
+                        isAma: false,
+                        isAudit: false,
+                    },
                     address: formdata.address ? toChecksumAddress(formdata.address) : '',
                     logo: formdata.logo ? formdata.logo : '',
-                    name: formdata.name ? formdata.name : '',
-                    twitter: formdata.twitter ? formdata.twitter : '',
+                    votes: 0,
                     description: formdata.description ? formdata.description : '',
+                    scamReasonTooltip: formdata.description ? formdata.description : '',
                     scamDate: formdata.scamDate ? format(formdata.scamDate._d, 'yyy-MM-dd') : '',
                     scamReason: [
                         formdata.scamreason
@@ -233,9 +257,9 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
             }
             tokenForm.validateFields().then(
                 res => {
-                    axios.post('https://nhlm8489e3.execute-api.us-east-2.amazonaws.com/prod/tokens_info/submit', submitObj).then(
+                    axios.post('https://api.royalproof.net/submit', submitObj).then(
                         res => {
-                            if (res.data.content) {
+                            if (res.data.address) {
                                 Swal.fire({
                                     title: 'Thank you for submiting a scam  ',
                                     text: 'our team will review the request, once done you will see it on the platform,  now you will be redirected to the main page',
@@ -280,6 +304,7 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
 
     let twitterRef;
     let telegramRef;
+    let discordRef;
 
     useEffect(() => {
 
@@ -291,7 +316,7 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
 
 
     const validadeAddress = (address: string) => {
-        return axios.get(`https://nhlm8489e3.execute-api.us-east-2.amazonaws.com/prod/tokenorwalletinfo/${address}`)
+        return axios.get(`https://api.royalproof.net/network/tokeninfo/${address}`)
 
     }
 
@@ -328,9 +353,9 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
 
             try {
                 if (addr !== undefined && addr !== '') {
-                    axios.get(`https://nhlm8489e3.execute-api.us-east-2.amazonaws.com/prod/tokens_info/submit/${addr}`).then(
+                    axios.get(`https://api.royalproof.net/network/token/${addr}`).then(
                         res => {
-                            if (res.data.content) {
+                            if (res.data.address) {
                                 setAddressValidation({
                                     err: 0,
                                     message: 'This token has already been submitted, it may be pending for approval',
@@ -340,27 +365,27 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
                             } else {
                                 validadeAddress(addr).then(
                                     ({ data }) => {
-                                        if (data.smartContractInfo && data.smartContractInfo.currency.symbol) {
+                                        if (data && data.currency.symbol) {
                                             if (formOption === 'scam') {
                                                 scamForm.setFieldsValue({
                                                     ...scamForm.getFieldsValue(),
                                                     ...{
-                                                        symbol: data.smartContractInfo.currency.symbol,
-                                                        name: data.smartContractInfo.currency.name
+                                                        symbol: data.currency.symbol,
+                                                        name: data.currency.name
                                                     }
                                                 })
                                             } else {
                                                 tokenForm.setFieldsValue({
                                                     ...tokenForm.getFieldsValue(),
                                                     ...{
-                                                        symbol: data.smartContractInfo.currency.symbol,
-                                                        name: data.smartContractInfo.currency.name
+                                                        symbol: data.currency.symbol,
+                                                        name: data.currency.name
                                                     }
                                                 })
                                             }
                                         }
                                         setAddressLoading(false);
-                                        const addressCheckResponse: AddressCheckResponseModel | null = data.smartContractInfo;
+                                        const addressCheckResponse: AddressCheckResponseModel | null = data;
                                         if (addressCheckResponse == null) {
                                             throw new Error('Please make sure to input a correct token Address');
                                         }
@@ -432,9 +457,9 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
 
         try {
             if (addr !== undefined && addr !== '') {
-                axios.get(`https://nhlm8489e3.execute-api.us-east-2.amazonaws.com/prod/tokens_info/submit/${addr}`).then(
+                axios.get(`https://api.royalproof.net/network/token/${addr}`).then(
                     res => {
-                        if (res.data.content) {
+                        if (res.data.address) {
                             setAddressValidation({
                                 err: 0,
                                 message: 'This token has already been submitted, it may be pending for approval',
@@ -444,26 +469,30 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
                         } else {
                             validadeAddress(addr).then(
                                 ({ data }) => {
-                                    if (data.smartContractInfo && data.smartContractInfo.currency.symbol) {
+                                    if (data && data.currency.symbol) {
                                         if (formOption === 'scam') {
                                             scamForm.setFieldsValue({
                                                 ...scamForm.getFieldsValue(),
                                                 ...{
-                                                    symbol: data.smartContractInfo.currency.symbol,
-                                                    name: data.smartContractInfo.currency.name
+                                                    symbol: data.currency.symbol,
+                                                    name: data.currency.name,
+                                                    decimals: data.currency.decimals,
+                                                    tokenType: data.currency.tokenType
                                                 }
                                             })
                                         } else {
                                             tokenForm.setFieldsValue({
                                                 ...tokenForm.getFieldsValue(),
                                                 ...{
-                                                    symbol: data.smartContractInfo.currency.symbol,
-                                                    name: data.smartContractInfo.currency.name
+                                                    symbol: data.currency.symbol,
+                                                    name: data.currency.name,
+                                                    decimals: data.currency.decimals,
+                                                    tokenType: data.currency.tokenType
                                                 }
                                             })
                                         }
                                     }
-                                    const addressCheckResponse: AddressCheckResponseModel | null = data.smartContractInfo;
+                                    const addressCheckResponse: AddressCheckResponseModel | null = data;
                                     if (addressCheckResponse == null) {
                                         setAddressLoading(false);
                                         throw new Error('Please make sure to input a correct token Address');
@@ -577,6 +606,14 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
                         </Form.Item>
                         <Form.Item name="symbol" label="Symbol/Ticker" >
                             <Input disabled={true}></Input>
+                        </Form.Item>    
+                    </div>
+                    <div className="row-group">
+                        <Form.Item name="decimals" label="Decimals">
+                            <Input disabled={true} />
+                        </Form.Item>
+                        <Form.Item name="tokenType" label="Token Type" >
+                            <Input disabled={true}></Input>
                         </Form.Item>
                     </div>
                     <Form.Item name="description" label="Token Description" rules={[{ required: false }]}>
@@ -588,12 +625,15 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
                     <Form.Item name="website" label="Website" rules={[{ required: false }]}>
                         <Input />
                     </Form.Item>
+                    <Form.Item name="telegram" label="Telegram" rules={[{ required: true }]}>
+                        <Input ref={telegramRef} />
+                    </Form.Item>
                     <div className="row-group">
                         <Form.Item name="twitter" label="Twitter" rules={[{ required: false }]}>
                             <Input onClick={() => { }} ref={twitterRef} />
                         </Form.Item>
-                        <Form.Item name="telegram" label="Telegram" rules={[{ required: true }]}>
-                            <Input ref={telegramRef} />
+                        <Form.Item name="discord" label="Discord" rules={[{ required: false }]}>
+                            <Input ref={discordRef} />
                         </Form.Item>
                     </div>
 
@@ -615,13 +655,6 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
                                 checkValidation();
                             }} />
                         </Form.Item>
-                        {
-                            isPresale &&
-                            <Form.Item valuePropName="checked" name="isWhiteListed" label="Is there a whitelist?" rules={[{ required: false }]}>
-                                <Switch />
-
-                            </Form.Item>
-                        }
                     </div>
                     {
                         isPresale &&
@@ -691,6 +724,14 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
                             <Input disabled={true}></Input>
                         </Form.Item>
                     </div>
+                    <div className="row-group">
+                        <Form.Item name="decimals" label="Decimals" >
+                            <Input disabled={true}></Input>
+                        </Form.Item>
+                        <Form.Item name="tokenType" label="Token Type" >
+                            <Input disabled={true}></Input>
+                        </Form.Item>
+                    </div>
                     <Form.Item name="scamreason" label="Scam Reason" rules={[{ required: false }]}>
                         <Select>
                             <option value="Honeypot">Honeypot</option>
@@ -719,11 +760,14 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
                             </svg>
                         } />
                     </Form.Item>
+                    <Form.Item name="telegram" label="Telegram" rules={[{ required: true }]}>
+                        <Input />
+                    </Form.Item>
                     <div className="row-group">
                         <Form.Item name="twitter" label="Twitter" rules={[{ required: false }]}>
                             <Input />
                         </Form.Item>
-                        <Form.Item name="telegram" label="Telegram" rules={[{ required: true }]}>
+                        <Form.Item name="discord" label="Discord" rules={[{ required: false }]}>
                             <Input />
                         </Form.Item>
                     </div>
