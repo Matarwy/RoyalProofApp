@@ -53,10 +53,10 @@ export const HomeComponent: React.FC = () => {
 
     const [adBanners, setAdBanners] = useState<{ src: string, url: string }[]>(
         [
-            {
-                src: "",
-                url: ''
-            }
+            // {
+            //     src: "",
+            //     url: ""
+            // }
         ]
     );
 
@@ -328,7 +328,9 @@ export const HomeComponent: React.FC = () => {
                 </Card>
                 <Card id="advertisement-inline">
                     <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                        <a href={adBanners[currentAdIndex].url} target="__blank"><img src={adBanners[currentAdIndex].src} alt="" /></a>
+                        { adBanners.length > 0 &&
+                            <a href={adBanners[currentAdIndex].url} target="__blank"><img src={adBanners[currentAdIndex].src} alt="" /></a>
+                        }
                     </div>
                 </Card>
             </div>

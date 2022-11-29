@@ -43,9 +43,9 @@ const WalletComponent: React.FC = () => {
     const [sentTokenGroups, setSentTokenGroups] = useState<Transfers.TransfersInfoModel[] | null>();
     const [receivedTransfersPerToken, setReceivedTransfersPerToken] = useState<Transfer[] | null>();
     const [sentTransfersPerToken, setSentTransfersPerToken] = useState<Transfer[] | null>();
-    const [transactionsPerTokenEndpoint] = useState<any>(process.env.REACT_APP_TRANSACTIONS_PER_TOKEN_ENDPOINT);
-    const [walletEndpoint] = useState<any>(process.env.REACT_APP_WALLET_ENDPOINT_RECEIVED_TOKEN);
-    const [transfersEndpoint] = useState<any>(process.env.REACT_APP_WALLET_ENDPOINT_SENT_TOKEN);
+    // const [transactionsPerTokenEndpoint] = useState<any>(process.env.REACT_APP_TRANSACTIONS_PER_TOKEN_ENDPOINT);
+    // const [walletEndpoint] = useState<any>(process.env.REACT_APP_WALLET_ENDPOINT_RECEIVED_TOKEN);
+    // const [transfersEndpoint] = useState<any>(process.env.REACT_APP_WALLET_ENDPOINT_SENT_TOKEN);
 
     const [chartData, setChartData] = useState<any>();
 
@@ -91,7 +91,7 @@ const WalletComponent: React.FC = () => {
             address: (walletid as string),
         }
 
-        fetchWalletData(walletEndpoint, requestWaletDataBody);
+        //fetchWalletData(walletEndpoint, requestWaletDataBody);
     }, []);
 
 
@@ -101,7 +101,7 @@ const WalletComponent: React.FC = () => {
             address: (walletid as string),
             from: from(7)
         }
-        fetchTransfers(transfersEndpoint, requestTransfersDataBody);
+        //fetchTransfers(transfersEndpoint, requestTransfersDataBody);
        }
     }, [walletInfo])
 
@@ -179,7 +179,7 @@ const WalletComponent: React.FC = () => {
 
             }
             setLoading(true)
-            fetchTransfersReceived(transfersEndpoint, requestTransfersDataBody);
+            //fetchTransfersReceived(transfersEndpoint, requestTransfersDataBody);
 
         } else {
             const requestTransfersDataBody = {
@@ -190,12 +190,12 @@ const WalletComponent: React.FC = () => {
             if (type === 'receivedPeriod') {
                 setLoading(true)
                 setReceivedPeriod(days);
-                fetchTransfersReceived(transfersEndpoint, requestTransfersDataBody);
+                //fetchTransfersReceived(transfersEndpoint, requestTransfersDataBody);
 
             } else {
                 setLoadingSent(true);
                 setSentPeriod(days);
-                fetchTransfersSent(transfersEndpoint, requestTransfersDataBody);
+                //fetchTransfersSent(transfersEndpoint, requestTransfersDataBody);
             }
         }
 
@@ -225,30 +225,30 @@ const WalletComponent: React.FC = () => {
 
         // setReceivedTransfersPerToken([])
         // setReceivedTransfersPerToken([])
-        axios.post(transactionsPerTokenEndpoint, body
-        ).then(
-            ({ data }) => {
-                const res = data.transfers as TransfersResponse;
-                const { transfers } = res;
-                if (body.isSend) {
-                    const token = sentTokenGroups?.find(group => group.currency.address === body.currency)
-                    if (token) {
-                        token.transactions = transfers;
-                        setSentTokenGroups([...sentTokenGroups as any])
-                    }
-                } else {
-                    const res = data.transfers as TransfersResponse;
-                    const { transfers } = res;
-                    const token = receivedTokenGroups?.find(group => group.currency.address === body.currency)
-                    if (token) {
-                        token.transactions = transfers;
-                        setReceivedTokenGroups([...receivedTokenGroups as any])
+        // axios.post(transactionsPerTokenEndpoint, body
+        // ).then(
+        //     ({ data }) => {
+        //         const res = data.transfers as TransfersResponse;
+        //         const { transfers } = res;
+        //         if (body.isSend) {
+        //             const token = sentTokenGroups?.find(group => group.currency.address === body.currency)
+        //             if (token) {
+        //                 token.transactions = transfers;
+        //                 setSentTokenGroups([...sentTokenGroups as any])
+        //             }
+        //         } else {
+        //             const res = data.transfers as TransfersResponse;
+        //             const { transfers } = res;
+        //             const token = receivedTokenGroups?.find(group => group.currency.address === body.currency)
+        //             if (token) {
+        //                 token.transactions = transfers;
+        //                 setReceivedTokenGroups([...receivedTokenGroups as any])
 
-                    }
-                }
-            }
+        //             }
+        //         }
+        //     }
 
-        );
+        // );
 
     }
 
