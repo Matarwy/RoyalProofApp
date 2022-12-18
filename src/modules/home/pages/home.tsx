@@ -228,9 +228,7 @@ export const HomeComponent: React.FC = () => {
 
     return <Container>
         <div className="top-banner-wrapper">
-            <Link to="/charity">
-                <img className="mobile-scam-banner" src={scambanner} width="100%"></img>
-            </Link>
+            <img className="mobile-scam-banner" src={scambanner} width="100%"></img>
         </div>
         <CardGrid>
             <Card

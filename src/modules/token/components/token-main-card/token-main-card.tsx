@@ -42,7 +42,7 @@ const TokenMainCardComponent: React.FC<{ loading: any }> = (props) => {
         axios.get('https://api.ipify.org?format=json').then(
             res => {
                 setUserIP(res.data.ip)
-                axios.post('https://api.royalproof.net/submit/voteing_data', {
+                axios.post('http://localhost:3030/submit/voteing_data', {
                     httpMethod: "POST",
                     ipAddress: res.data.ip,
                 }).then(
@@ -70,7 +70,7 @@ const TokenMainCardComponent: React.FC<{ loading: any }> = (props) => {
 
                     if (!(_votes.some(vote => vote.tokenAddress === tokenData.basicInfo?.address))) {
                         setVotes(votes + 1)
-                        axios.post('https://api.royalproof.net/submit/voting_data',
+                        axios.post('http://localhost:3030/submit/voting_data',
                             {
                                 httpMethod: "POST",
                                 ipAddress: res.data.ip,

@@ -99,14 +99,14 @@ const Faq: React.FC = () => {
                             <p>
                                 No, we only award the NFT to projects that score over 90/100 in our point system. Even then, there is a slight chance of a project to do something malicious to hurt their investors.
         <br></br>
-                            <a className="primary-link" href="https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/99844844277068474025626073867816441448450620712689519536016720659450041466881" target={'__blank'}>
+                            {/* <a className="primary-link" href="https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/99844844277068474025626073867816441448450620712689519536016720659450041466881" target={'__blank'}>
                                 See example
 
-                            </a>
+                            </a> */}
                             </p>
                         </CollapsePanel>
                         <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="I'm ready to audit my project. How do I contact you?" key="4">
-                            <p>You can contact our team at support@royalproof.net or by joining our <a className="primary-link" href="https://t.me/ICOListing_Live" target={'__blank'}>Telegram group.</a></p>
+                            <p>You can contact our team at support@royalproof.net or by joining our <a className="primary-link" href="https://t.me/RoyalProof_Official" target={'__blank'}>Telegram group.</a></p>
                         </CollapsePanel>
 
                     </Collapse>
@@ -143,12 +143,12 @@ const Faq: React.FC = () => {
                                 - Promotion
                             </p>
                         </CollapsePanel>
-                        <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="Who are some of your partners?" key="3">
+                        {/* <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="Who are some of your partners?" key="3">
                             <p>We are currently official security partners of <a className="primary-link" href="https://icoListing.live" target={'__blank'}>
                                 ICO Listing
                             </a>.</p>
 
-                        </CollapsePanel>
+                        </CollapsePanel> */}
                         <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="How can I learn more about RoyalProof?" key="4">
                             <p>You can visit our website at <a className="primary-link" href="" target={'__blank'}>
                                 royalproof.net

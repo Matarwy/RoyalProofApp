@@ -15,7 +15,7 @@ const CardTitleSubtitle: React.FC<{
 
         {
             props.banner !== undefined &&
-                < a href='https://icolisting.live' target="_blank" rel="noreferrer"> <img className="scam-title-banner" width="100%" src={scambanner} alt="" /></a>
+                <img className="scam-title-banner" width="100%" src={scambanner} alt="" />
         }
         <div className="header">
             <h3 className="card-title align-items-start flex-column">

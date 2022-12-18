@@ -14,7 +14,7 @@ const TickerComponent: React.FC = () => {
     }, []);
 
     const fetchTokens = () => {
-        axios.get('https://api.royalproof.net/network/ticker').then(
+        axios.get('http://localhost:3030/network/ticker').then(
             ({ data }) => {
                 setTokens(data);
                 setTokens(data.resultArray.map(

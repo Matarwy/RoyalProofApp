@@ -118,22 +118,22 @@ function App() {
             </CNavbarBrand>
             <CCollapse className="navbar-collapse" visible={navbarOpen}>
               <CNavbarNav>
-                <CNavItem key="1">
+                {/* <CNavItem key="1">
                   <Popover content={'List Ico for free'} >
                     <Badge count="NEW" offset={[-15, 1]} style={{ fontSize: '10px', lineHeight: "19px", height: '18px', minHeight: '18px' }} status='success'>
-                      {/*<Link*/}
-                      {/*  onClick={toggleNavbar}*/}
-                      {/*  to="/request-audit">*/}
-                        {/*<CNavLink className="menu-item menu-lg-down-accordion me-lg-1 menu-link py-3 menu-title" target="_blank" active>*/}
-                        {/*  Get Audit + KYC*/}
-                        {/*</CNavLink>*/}
+                      <Link
+                       onClick={toggleNavbar}
+                       to="/request-audit">
+                        <CNavLink className="menu-item menu-lg-down-accordion me-lg-1 menu-link py-3 menu-title" target="_blank" active>
+                         Get Audit + KYC
+                        </CNavLink>
                         <CNavLink target='__blank' href="https://icolisting.live">
                           ICO Listing
                         </CNavLink>
-                      {/*</Link>*/}
+                      </Link>
                     </Badge>
                   </Popover>
-                </CNavItem>
+                </CNavItem> */}
                 <CNavItem key="2">
                   <Popover content={'contact us on telegram'} >
                       {/*<Link*/}
@@ -142,7 +142,7 @@ function App() {
                         {/*<CNavLink className="menu-item menu-lg-down-accordion me-lg-1 menu-link py-3 menu-title" target="_blank" active>*/}
                         {/*  Get Audit + KYC*/}
                         {/*</CNavLink>*/}
-                        <CNavLink target='__blank' href="https://t.me/ICOLiveAdmin">
+                        <CNavLink target='__blank' href="https://t.me/Royalproof_Admin">
                           Contact Telegram
                         </CNavLink>
                       {/*</Link>*/}
@@ -160,12 +160,12 @@ function App() {
                 </CNavItem>
                 <div className="inline-icons" style={{ display: 'flex' }}>
                   <CNavItem key="4" className="social">
-                    <CNavLink href="https://twitter.com/icolisting_live" target='__blank'>
+                    <CNavLink href="https://twitter.com/Royalproof_Net" target='__blank'>
                       <FaTwitter color={'#a1a5b7'} fontSize={20} />
                     </CNavLink>
                   </CNavItem>
                   <CNavItem key="5" className="social">
-                    <CNavLink href="https://t.me/ICOListing_Live" target='__blank'>
+                    <CNavLink href="https://t.me/RoyalProof_Official" target='__blank'>
                       <FaTelegram color={'#a1a5b7'} fontSize={20} />
                     </CNavLink>
                   </CNavItem>
@@ -191,7 +191,7 @@ function App() {
           <div className="container-xxl d-flex flex-column flex-md-row align-items-center justify-content-between">
             <div className="text-dark order-2 order-md-1">
               <span className="text-muted fw-bold me-1">© {moment().year()}</span>
-              <a href="https://icolisting.live/" target="_blank" className="text-gray-800 text-hover-primary">RoyalProof</a>
+              <span className="text-gray-800">RoyalProof</span>
             </div>
             <ul className="menu menu-gray-600 menu-hover-primary fw-bold order-1">
 
