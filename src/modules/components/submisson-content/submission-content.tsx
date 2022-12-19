@@ -190,7 +190,7 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
             tokenForm.validateFields().then(
                 res => {
 
-                    axios.post('http://localhost:3030/submit', submitObj).then(
+                    axios.post('https://api.royalproof.net/submit', submitObj).then(
                         res => {
                             Swal.fire({
                                 title: 'Thank you for submiting a token  ',
@@ -257,7 +257,7 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
             }
             tokenForm.validateFields().then(
                 res => {
-                    axios.post('http://localhost:3030/submit', submitObj).then(
+                    axios.post('https://api.royalproof.net/submit', submitObj).then(
                         res => {
                             if (res.data.address) {
                                 Swal.fire({
@@ -316,7 +316,7 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
 
 
     const validadeAddress = (address: string) => {
-        return axios.get(`http://localhost:3030/network/tokeninfo/${address}`)
+        return axios.get(`https://api.royalproof.net/network/tokeninfo/${address}`)
 
     }
 
@@ -353,7 +353,7 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
 
             try {
                 if (addr !== undefined && addr !== '') {
-                    axios.get(`http://localhost:3030/network/token/${addr}`).then(
+                    axios.get(`https://api.royalproof.net/network/token/${addr}`).then(
                         res => {
                             if (res.data.address) {
                                 setAddressValidation({
@@ -457,7 +457,7 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
 
         try {
             if (addr !== undefined && addr !== '') {
-                axios.get(`http://localhost:3030/network/token/${addr}`).then(
+                axios.get(`https://api.royalproof.net/network/token/${addr}`).then(
                     res => {
                         if (res.data.address) {
                             setAddressValidation({

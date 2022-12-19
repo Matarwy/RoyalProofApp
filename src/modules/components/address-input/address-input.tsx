@@ -14,7 +14,7 @@ const AddressInputComponent: React.FC<{ valid: any, valueChange }> = ({ valid, v
     const [addressLoading, setAddressLoading] = useState<boolean>(false);
 
     const validadeAddress = (address: string) => {
-        return axios.get(`http://localhost:3030/network/tokeninfo/${address}`)
+        return axios.get(`https://api.royalproof.net/network/tokeninfo/${address}`)
 
     }
 

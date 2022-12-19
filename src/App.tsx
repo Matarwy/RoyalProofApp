@@ -134,6 +134,15 @@ function App() {
                     </Badge>
                   </Popover>
                 </CNavItem> */}
+                <CNavItem key="1">
+                <Link
+                    onClick={toggleNavbar}
+                    to="/">
+                    <CNavLink>
+                      Home
+                    </CNavLink>
+                  </Link>
+                </CNavItem>
                 <CNavItem key="2">
                   <Popover content={'contact us on telegram'} >
                       {/*<Link*/}

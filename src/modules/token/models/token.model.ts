@@ -23,7 +23,7 @@ export class Token {
                     logo: featuredToken?.logo,
                     deployedDate: featuredToken?.deployedDate,
                     currency: {
-                        decimals: featuredToken?.currency?.decimals as number,
+                        decimals: featuredToken?.currency?.decimals as string,
                         name: featuredToken?.currency?.name as string,
                         symbol: featuredToken?.currency?.symbol as string,
                         tokenType: featuredToken?.currency?.tokenType as string

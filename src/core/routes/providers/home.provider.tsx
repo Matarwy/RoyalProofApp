@@ -72,10 +72,10 @@ export const HomeProvider = (props: any) => {
 
     }, []);
 
-    const fetchCacheID = () => axios.get('http://localhost:3030/network/force_update')
+    const fetchCacheID = () => axios.get('https://api.royalproof.net/network/force_update')
 
     const fetchFeaturedTokens = () => {
-        axios.get('http://localhost:3030/network/trusted').then(
+        axios.get('https://api.royalproof.net/network/trusted').then(
             ({ data }) => {
                 const featuredTokensResponse: FeaturedTokensResponse = data;
                 const featuredTokens = featuredTokensResponse?.content?.Items.map(
@@ -90,7 +90,7 @@ export const HomeProvider = (props: any) => {
     }
 
     const fetchRecentlyAdded = () => {
-        axios.get('http://localhost:3030/network/upcomings').then(
+        axios.get('https://api.royalproof.net/network/upcomings').then(
             ({ data }) => {
                 const recentlyAddedResponse: FeaturedTokensResponse = data;
                 console.log("no error top");
@@ -110,7 +110,7 @@ export const HomeProvider = (props: any) => {
 
 
     const fetchAmaAdded = () => {
-        axios.get('http://localhost:3030/network/amas').then(
+        axios.get('https://api.royalproof.net/network/amas').then(
             ({ data }) => {
                 const amaTokensResponse: FeaturedTokensResponse = data;
                 const amaTokens = amaTokensResponse?.content?.Items.map(
@@ -128,7 +128,7 @@ export const HomeProvider = (props: any) => {
 
 
     const fetchLatestScams = () => {
-        axios.get('http://localhost:3030/network/scam').then(
+        axios.get('https://api.royalproof.net/network/scam').then(
             ({ data }) => {
                 const latestScamsResponse: FeaturedTokensResponse = data;
                 const latestScams = latestScamsResponse?.content?.Items?.map(
@@ -146,7 +146,7 @@ export const HomeProvider = (props: any) => {
 
 
     const fetchPotentialScams = () => {
-        axios.get('http://localhost:3030/network/not_audited').then(
+        axios.get('https://api.royalproof.net/network/not_audited').then(
             ({ data }) => {
                 const potentialScamsResponse: FeaturedTokensResponse = data;
                 const potentialScams = potentialScamsResponse?.content?.Items?.map(

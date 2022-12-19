@@ -20,7 +20,7 @@ const UnverifiedTokens: React.FC = () => {
     }, []);
 
     const fetchTokens = () => {
-        axios.get('http://localhost:3030/network/audited').then(
+        axios.get('https://api.royalproof.net/network/audited').then(
             res => {
                 const auditedResponse: AuditedTokenResponseModel = res.data;
                 const _auditedTokens = auditedResponse.content.Items.map(tokens => new AuditedToken(tokens));

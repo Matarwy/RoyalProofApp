@@ -23,7 +23,7 @@ const SearchAdressInput: React.FC = () => {
 
     const validadeAddress = (address: string) => {
 
-        return axios.get(`http://localhost:3030/network/tokeninfo/${address}`)
+        return axios.get(`https://api.royalproof.net/network/tokeninfo/${address}`)
 
     }
     const navigate = useNavigate();
