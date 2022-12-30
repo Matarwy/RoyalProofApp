@@ -169,7 +169,7 @@ function App() {
                 </CNavItem>
                 <div className="inline-icons" style={{ display: 'flex' }}>
                   <CNavItem key="4" className="social">
-                    <CNavLink href="https://twitter.com/Royalproof_Net" target='__blank'>
+                    <CNavLink href="https://twitter.com/RoyalproofAudit" target='__blank'>
                       <FaTwitter color={'#a1a5b7'} fontSize={20} />
                     </CNavLink>
                   </CNavItem>
