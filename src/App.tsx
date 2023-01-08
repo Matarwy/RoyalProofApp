@@ -144,6 +144,20 @@ function App() {
                   </Link>
                 </CNavItem>
                 <CNavItem key="2">
+                  <Popover content={'Lock LP Tokens For Period of time'} >
+                      {/*<Link*/}
+                      {/*  onClick={toggleNavbar}*/}
+                      {/*  to="/request-audit">*/}
+                        {/*<CNavLink className="menu-item menu-lg-down-accordion me-lg-1 menu-link py-3 menu-title" target="_blank" active>*/}
+                        {/*  Get Audit + KYC*/}
+                        {/*</CNavLink>*/}
+                        <CNavLink target='__blank' href="https://locker.royalproof.net">
+                          Locker
+                        </CNavLink>
+                      {/*</Link>*/}
+                  </Popover>
+                </CNavItem>
+                <CNavItem key="3">
                   <Popover content={'contact us on telegram'} >
                       {/*<Link*/}
                       {/*  onClick={toggleNavbar}*/}
@@ -152,12 +166,12 @@ function App() {
                         {/*  Get Audit + KYC*/}
                         {/*</CNavLink>*/}
                         <CNavLink target='__blank' href="https://t.me/Royalproof_Admin">
-                          Contact Telegram
+                          Contact US
                         </CNavLink>
                       {/*</Link>*/}
                   </Popover>
                 </CNavItem>
-                <CNavItem key="3"
+                <CNavItem key="4"
                 >
                   <Link
                     onClick={toggleNavbar}
@@ -168,13 +182,13 @@ function App() {
                   </Link>
                 </CNavItem>
                 <div className="inline-icons" style={{ display: 'flex' }}>
-                  <CNavItem key="4" className="social">
+                  <CNavItem key="5" className="social">
                     <CNavLink href="https://twitter.com/RoyalproofAudit" target='__blank'>
                       <FaTwitter color={'#a1a5b7'} fontSize={20} />
                     </CNavLink>
                   </CNavItem>
-                  <CNavItem key="5" className="social">
-                    <CNavLink href="https://t.me/RoyalProof_Official" target='__blank'>
+                  <CNavItem key="6" className="social">
+                    <CNavLink href="https://t.me/RoyalProofOfficial" target='__blank'>
                       <FaTelegram color={'#a1a5b7'} fontSize={20} />
                     </CNavLink>
                   </CNavItem>
