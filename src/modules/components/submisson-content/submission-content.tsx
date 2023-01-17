@@ -150,7 +150,7 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
             let submitObj = {
                 httpMethod: "POST",
                 item: {
-                    socialsLinks: {
+                    socialLinks: {
                         telegram: formdata.telegram ? formdata.telegram : '',
                         website: formdata.website ? formdata.website : '',
                         twitter: formdata.twitter ? formdata.twitter : '',
@@ -224,7 +224,7 @@ const SubmissionContent: React.FC<{ submitProp?: boolean }> = (props) => {
             const submitObj = {
                 httpMethod: "POST",
                 item: {
-                    socialsLinks: {
+                    socialLinks: {
                         telegram: formdata.telegram ? formdata.telegram : '',
                         website: formdata.website ? formdata.website : '',
                         twitter: formdata.twitter ? formdata.twitter : '',

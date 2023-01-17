@@ -5,7 +5,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import TokenInfoHighlight from '../../components/token-info-highlight/token-info-highlight';
 import TokenMainCardComponent from '../../components/token-main-card/token-main-card';
 import { Container, MainContent, MainSection } from './token-dashboard.style';
-
+import moment from 'moment';
 
 import {  LaptopOutlined } from '@ant-design/icons'
 import { ApplicationContext } from '../../../../core/routes/providers/application.provider';
@@ -58,14 +58,6 @@ export const TokenDashboardComponent: React.FC = () => {
 
     }, [tokenid])
 
-    const getDate = (rdate: string) => {
-        const date = parseISO(rdate);
-        if (date && isValid(date)) {
-            return format(date, 'PP').toString();
-        } else {
-            return '';
-        }
-    }
     return <Container>
         <MainSection>
             <TokenMainCardComponent
@@ -195,7 +187,7 @@ export const TokenDashboardComponent: React.FC = () => {
                                     ) >= 0 ? 'NOT LAUNCHED' : 'LAUNCHED' : '-'}
                                 </Descriptions.Item>
                                 <Descriptions.Item label="Release Date">{
-                                    (tokenData as Token)?.basicInfo?.releaseDate ? getDate(tokenData?.basicInfo?.releaseDate as string) : '-'}
+                                    tokenData?.basicInfo?.releaseDate ? format(moment(tokenData?.basicInfo?.releaseDate).hour(0).minutes(0).second(0).milliseconds(0).toDate(), 'PP') : '-'}
                                 </Descriptions.Item>
                                 <Descriptions.Item label="Is Contract Verified?">
                                     {tokenData ? tokenData?.basicInfo?.isVerified ? 'Yes' : 'No' : '-'}
@@ -208,7 +200,7 @@ export const TokenDashboardComponent: React.FC = () => {
                                     <Card className='presale-card' title="Presale Info">
                                         <Descriptions column={1}>
                                             <Descriptions.Item label="Start Date">
-                                                {tokenData?.basicInfo ? tokenData?.basicInfo?.presaleInfo?.presaleDate ? getDate(tokenData?.basicInfo?.presaleInfo?.presaleDate) : '-' : '-'}
+                                                {tokenData?.basicInfo ? tokenData?.basicInfo?.presaleInfo?.presaleDate ? format(moment(tokenData?.basicInfo?.presaleInfo?.presaleDate).hour(0).minutes(0).second(0).milliseconds(0).toDate(), 'PP') : '-' : '-'}
                                             </Descriptions.Item>
                                             <Descriptions.Item label="Soft Cap">
                                                 {tokenData?.basicInfo ? tokenData?.basicInfo?.presaleInfo?.softcap ? tokenData?.basicInfo?.presaleInfo?.softcap : '-' : '-'}
