@@ -265,9 +265,9 @@ export const HomeComponent: React.FC = () => {
                             )
                     }
                 </div>
-                {
+                {/* {
                     recentlyAdded?.length === 0 && <div><Empty /></div>
-                }
+                } */}
             </Card>
 
             <Card
@@ -275,12 +275,11 @@ export const HomeComponent: React.FC = () => {
                 title={<CardTitleSubtitle
                     banner={{ link: '', src: scambanner }}
                     title="Upcoming Tokens"
-                    extra={
-                        <span style={{ fontWeight: 500, columnGap: 5, alignItems: 'center', display: 'Flex' }}>Verified only?
-                            <Switch size={'small'} onChange={changeVerifiedOnly} />
-                        </span>}
                 ></CardTitleSubtitle>}
-
+                extra={
+                    <span style={{ fontWeight: 500, columnGap: 5, alignItems: 'center', display: 'Flex' }}>Verified only?
+                        <Switch size={'small'} onChange={changeVerifiedOnly} />
+                    </span>}
                 actions={[
                     <Pagination
                         size="small"
@@ -294,9 +293,9 @@ export const HomeComponent: React.FC = () => {
                     recentlyAdded?.filter(filterUpcomingByVerified).slice((recentlyAddedPage - 1) * 6, recentlyAddedPage * 6).map((token: FeaturedToken) =>
                         <RecentlyAddedItem token={token} imageLoading={recentlyImageLoading}></RecentlyAddedItem>)
                 }
-                {
+                {/* {
                     recentlyAdded?.length === 0 && <div><Empty /></div>
-                }
+                } */}
 
             </Card>
             <Card id="amas" title={'Upcoming AMAs'}
@@ -358,9 +357,9 @@ export const HomeComponent: React.FC = () => {
                             latestScams?.filter((token: FeaturedToken) => token.currency?.name.toLowerCase().includes(latestNameFilter.toLowerCase())).slice((latestScamsPage - 1) * 6, latestScamsPage * 6).map((token: FeaturedToken) =>
                                 <LatestScamsItem token={token} imageLoading={latestImageLoading}></LatestScamsItem>)
                         }
-                        {
+                        {/* {
                             latestScams?.length === 0 && <div><Empty /></div>
-                        }
+                        } */}
                     </div>
                 </Card>
                 <Card
@@ -382,9 +381,9 @@ export const HomeComponent: React.FC = () => {
                                 <FeaturedTokenItem token={token} imageLoading={featuredImageLoading}></FeaturedTokenItem>)
                     }
 
-                    {
+                    {/* {
                         potentialScams?.length === 0 && <div><Empty /></div>
-                    }
+                    } */}
                 </Card>
             </div>
         </CardGrid>
