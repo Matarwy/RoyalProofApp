@@ -9,7 +9,7 @@ import Root from './core/routes/root-routing';
 import { Badge, Button, Popover } from 'antd';
 import { CCollapse, CContainer, CNavbar, CNavbarBrand, CNavbarNav, CNavItem, CNavLink } from '@coreui/react';
 
-import { FaMedium, FaTelegram, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaTelegram, FaTwitter } from 'react-icons/fa';
 
 import { HashRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -190,6 +190,11 @@ function App() {
                   <CNavItem key="6" className="social">
                     <CNavLink href="https://t.me/RoyalProofOfficial" target='__blank'>
                       <FaTelegram color={'#a1a5b7'} fontSize={20} />
+                    </CNavLink>
+                  </CNavItem>
+                  <CNavItem key="7" className="social">
+                    <CNavLink href="https://github.com/Royal-Proof" target='__blank'>
+                      <FaGithub color={'#a1a5b7'} fontSize={20} />
                     </CNavLink>
                   </CNavItem>
                   {/* <CNavItem key="6" className="social">

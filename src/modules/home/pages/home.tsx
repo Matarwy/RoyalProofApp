@@ -239,10 +239,10 @@ export const HomeComponent: React.FC = () => {
                         <OfficialPartners></OfficialPartners>
                         <CardTitleSubtitle
                             fontSize={1}
-                            title="Potential Scams"
+                            title="Newly Added"
                             subtitle=""
                             search={true}
-                            searchPlaceholder="Search Potential Scams"
+                            searchPlaceholder="Search Newly Added"
                             searchChange={potentialSearch}></CardTitleSubtitle>
                     </div>
 

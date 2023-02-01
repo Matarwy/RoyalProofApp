@@ -123,7 +123,7 @@ const Faq: React.FC = () => {
                             <p>RoyalProof is a team of crypto security experts that have been performing audits for projects for several months in order to ensure safety in the crypto space.
                             </p>
                             <p>
-                                Due to our experience identifying red flags and potential scams, we decided to start our own "safe space" for the community to seek help and learn how not to fall for scams while allowing them to invest in safer projects. After our channel grew significantly, we decided to scale our project to reach as many people as possible that could use all the help we were providing, while also providing some unique tools to help them invest safely.
+                                Due to our experience identifying red flags and Newly Added, we decided to start our own "safe space" for the community to seek help and learn how not to fall for scams while allowing them to invest in safer projects. After our channel grew significantly, we decided to scale our project to reach as many people as possible that could use all the help we were providing, while also providing some unique tools to help them invest safely.
                             </p>
                         </CollapsePanel>
                         <CollapsePanel className='text-gray-700 fw-bolder cursor-pointer mb-0' header="What services does RoyalProof provide?" key="2">
