@@ -243,11 +243,26 @@ const TokenMainCardComponent: React.FC<{ loading: any }> = (props) => {
                     }
 
                     {
-                        tokenData?.basicInfo &&
+                        (tokenData?.basicInfo?.currency?.tokenType === "BEP20") &&
                         <Button href={`https://poocoin.app/tokens/${tokenData?.basicInfo?.address}`} target="_blank" type="primary" icon={
                             <RiBarChartFill color={'white'} fontSize={20} />
                         } size={'large'} />
                     }
+
+                    {
+                        (tokenData?.basicInfo?.currency?.tokenType === "ERC20") &&
+                        <Button href={`https://ethplorer.io/address/${tokenData?.basicInfo?.address}`} target="_blank" type="primary" icon={
+                            <RiBarChartFill color={'white'} fontSize={20} />
+                        } size={'large'} />
+                    }
+
+{
+                        (tokenData?.basicInfo?.currency?.tokenType === "MATIC20") &&
+                        <Button href={`https://polygon.poocoin.app/tokens/${tokenData?.basicInfo?.address}`} target="_blank" type="primary" icon={
+                            <RiBarChartFill color={'white'} fontSize={20} />
+                        } size={'large'} />
+                    }
+
 
                 </div>
             </Card>

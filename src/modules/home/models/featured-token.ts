@@ -79,6 +79,7 @@ export interface FeaturedTokensResponse {
 }
 
 export class FeaturedToken {
+    category: Category;
     kyc: boolean;
     socialLinks: Socials;
     trustLevel: string;
@@ -104,6 +105,7 @@ export class FeaturedToken {
     isVerified: boolean;
 
     constructor(featuredTokenDTO: FeaturedTokenDTO) {
+        this.category = featuredTokenDTO.category;
         this.currency = featuredTokenDTO.currency;
         this.socialLinks = featuredTokenDTO.socialLinks;
         this.kyc = featuredTokenDTO.kyc;

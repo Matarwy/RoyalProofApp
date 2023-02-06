@@ -86,6 +86,24 @@ const PotentialScamsItem: React.FC<{ token: FeaturedToken, imageLoading?: boolea
                         No KYC
                     </Tag>
                 }
+                {
+                    props.token.kyc &&
+                    <Tag
+                        style={{ whiteSpace: 'pre-wrap' }}
+                        color={'green'}
+                    >
+                        KYC
+                    </Tag>
+                }
+                {
+                    !props.token.isVerified &&
+                    <Tag
+                        style={{ whiteSpace: 'pre-wrap' }}
+                        color={'red'}
+                    >
+                        No AUDIT
+                    </Tag>
+                }
 
             </TrustLevelContainer>
         </Link>

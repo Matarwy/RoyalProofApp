@@ -165,7 +165,7 @@ function App() {
                         {/*<CNavLink className="menu-item menu-lg-down-accordion me-lg-1 menu-link py-3 menu-title" target="_blank" active>*/}
                         {/*  Get Audit + KYC*/}
                         {/*</CNavLink>*/}
-                        <CNavLink target='__blank' href="https://t.me/Royalproof_Admin">
+                        <CNavLink target='__blank' href="https://t.me/RoyalProofAdmin">
                           Contact US
                         </CNavLink>
                       {/*</Link>*/}

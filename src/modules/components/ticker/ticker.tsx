@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react';
 import { Container } from './ticker.style';
 import Ticker from 'react-ticker'
 import { Popover } from 'antd';
-import { Link } from 'react-router-dom';
 const TickerComponent: React.FC = () => {
     const [tokens, setTokens] = useState<any[]>([]);
     const [stopped, setStopped] = useState<any>();
@@ -17,19 +16,18 @@ const TickerComponent: React.FC = () => {
         axios.get('https://api.royalproof.net/network/ticker').then(
             ({ data }) => {
                 setTokens(data);
-                setTokens(data.resultArray.map(
+                setTokens(data.map(
                     token => {
-                        let price = token.priceToday;
-                        const index = (token.priceToday as number).toString().indexOf('e')
+                        let price = token.price;
+                        const index = (price as number).toString().indexOf('e')
                         if (index !== -1 || index > 0) {
-                            price = token.priceToday.toString().slice(0, index - 1);
+                            price = token.price.toString().slice(0, index - 1);
                         }
                         return {
                             logo: token.logo,
-                            address: token.address,
                             symbol: token.symbol,
+                            link: token.link,
                             price: price,
-                            variation: token.increase,
                             numberOfDigits: token.numberOfDigits
                         }
 
@@ -51,7 +49,7 @@ const TickerComponent: React.FC = () => {
             {() =>
                 tokens?.map((token, i) =>
                     <div key={i} className="items-wrapper">
-                        <Link onClick={()=>setStopped(false)} to={`/token/${token.address}`}>
+                        <a onClick={()=>setStopped(false)} href={token.link} target="_blank" rel="noreferrer">
                             <div className="item">
                                 <Popover content={<span>{token.symbol}</span>} >
                                     <div className="logo">
@@ -64,9 +62,9 @@ const TickerComponent: React.FC = () => {
                                         style: 'currency',
                                         currency: 'USD'
                                     }).format(token?.price)}</div>
-                                <div className="increase" style={{ color: `${(token.variation > 0) ? 'green' : 'red'}` }}>{Number(token?.variation).toFixed(1)}%</div>
+                                {/* <div className="increase" style={{ color: `${(token.variation > 0) ? 'green' : 'red'}` }}>{Number(token?.variation).toFixed(1)}%</div> */}
                             </div>
-                        </Link>
+                        </a>
                     </div>
                 )
             }
