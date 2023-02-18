@@ -19,6 +19,7 @@ import ClipboardJS from 'clipboard';
 import { AiFillCheckCircle } from 'react-icons/ai';
 
 export const TokenDashboardComponent: React.FC = () => {
+    
     const { ctx } = useContext(ApplicationContext) as any;
     const [tokenData, setTokenData] = ctx as [tokenData: Token, setTokenData: any];
     const [tokenAddress, setTokenAddress]: any = useState();
@@ -26,8 +27,8 @@ export const TokenDashboardComponent: React.FC = () => {
     const [copyConfirm, setCopyConfirm]: any = useState<boolean>(false);
     let { tokenid } = useParams();
 
-
     useEffect(() => {
+        
         new ClipboardJS('.copybutton');
         setLoadingState(true);
         setTokenAddress(tokenid);

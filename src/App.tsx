@@ -24,6 +24,11 @@ import TickerComponent from './modules/components/ticker/ticker';
 import Logo from './assets/core/RoyalProoflogo.png'
 import mobileLogo from './assets/core/mobile-logo.svg'
 import { HomeProvider } from './core/routes/providers/home.provider';
+import ReactGA from 'react-ga4';
+
+
+const TRACKING_ID = "G-4ZZHP91JHG"; // OUR_TRACKING_ID
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
   const [navbarOpen, setNavbarOpen] = useState<boolean>();
@@ -229,7 +234,7 @@ function App() {
                 </Link>
               </li>
               <li className="menu-item">
-                <a href="mailto:support@royalproof.net" target="_blank" className="menu-link px-2">Contact Us</a>
+                <a href="https://t.me/RoyalProofAdmin" target="_blank" className="menu-link px-2">Contact Us</a>
               </li>
             </ul>
           </div>
