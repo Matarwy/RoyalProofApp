@@ -274,7 +274,7 @@ export const HomeComponent: React.FC = () => {
                 id="recently"
                 title={<CardTitleSubtitle
                     banner={{ link: '', src: scambanner }}
-                    title="Upcoming Tokens"
+                    title="Promoted Tokens"
                 ></CardTitleSubtitle>}
                 extra={
                     <span style={{ fontWeight: 500, columnGap: 5, alignItems: 'center', display: 'Flex' }}>Verified only?
