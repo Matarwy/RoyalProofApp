@@ -93,7 +93,7 @@ export const TokenDashboardComponent: React.FC = () => {
                                 ></LaptopOutlined>
                                 <a style={{ fontSize: '14px' }} target="__blank"
                                     className="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2"
-                                    href={tokenData?.basicInfo?.royalProofAudit.certificateOfTrustURL}>{tokenData?.basicInfo?.tag?.toLowerCase() === 'verified' ? 'Audit Link' : '"Certificate of Trust"'} Link</a></div>
+                                    href={tokenData?.basicInfo?.royalProofAudit.certificateOfTrustURL}>KYC Link</a></div>
                             <div className="audit-gif">
                                 <img
                                     width="100%"
