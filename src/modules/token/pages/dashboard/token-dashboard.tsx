@@ -35,11 +35,11 @@ export const TokenDashboardComponent: React.FC = () => {
         setTokenData(null)
         try {
 
-            const persistedPotentialScams = JSON.parse(localStorage.getItem('potentialScams') as string);
-            const persistedLatestScams = JSON.parse(localStorage.getItem('latestScams') as string);
-            const persistedFeaturedTokens = JSON.parse(localStorage.getItem('featuredTokens') as string);
-            const persistedAmaTokens = JSON.parse(localStorage.getItem('amaTokens') as string);
-            const persistedRecentlyAddedTokens = JSON.parse(localStorage.getItem('recentlyAdded') as string);
+            const persistedPotentialScams = JSON.parse(sessionStorage.getItem('potentialScams') as string);
+            const persistedLatestScams = JSON.parse(sessionStorage.getItem('latestScams') as string);
+            const persistedFeaturedTokens = JSON.parse(sessionStorage.getItem('featuredTokens') as string);
+            const persistedAmaTokens = JSON.parse(sessionStorage.getItem('amaTokens') as string);
+            const persistedRecentlyAddedTokens = JSON.parse(sessionStorage.getItem('recentlyAdded') as string);
             const allTokens = [
                 ...persistedPotentialScams, ...persistedLatestScams, ...persistedFeaturedTokens, ...persistedAmaTokens,
                 ...persistedRecentlyAddedTokens
