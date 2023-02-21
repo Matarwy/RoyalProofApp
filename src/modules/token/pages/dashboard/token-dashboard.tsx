@@ -65,13 +65,26 @@ export const TokenDashboardComponent: React.FC = () => {
                 loading={tokenData?.basicInfo === undefined && <div className='loading'> <Spin /></div>}
             />
             {
+                (tokenData?.basicInfo?.OtherCompanyAudit !== undefined) &&
+                <Card title="Audit Information">
+                    <Descriptions size="small" column={{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}>
+                        <Descriptions.Item labelStyle={{ width: 'fit-content !important' }} label="Company">{(tokenData?.basicInfo?.OtherCompanyAudit as any).companyName}</Descriptions.Item>
+                    </Descriptions>
+                    <div className="audit-link">
+                        <LaptopOutlined color='#b5b5c3'
+                        ></LaptopOutlined>
+                        <a style={{ fontSize: '14px' }} target="__blank"
+                            className="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2"
+                            href={(tokenData?.basicInfo?.OtherCompanyAudit as any).auditLink}>Audit Link</a>
+                    </div>
+
+                </Card>
+            }
+            {
                 tokenData?.basicInfo?.royalProofAudit !== undefined &&
                 <Card title={`Trust ${tokenData?.basicInfo?.trustLevel} Award`}>
                     {
-                        loadingState && <Spin />
-                    }
-                    {
-                        !loadingState && <div>
+                        <div>
                             <Descriptions size="small" column={{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}>
                                 <Descriptions.Item labelStyle={{ width: 'fit-content !important' }} label="Company">{'RoyalProof'}</Descriptions.Item>
                             </Descriptions>
@@ -93,35 +106,11 @@ export const TokenDashboardComponent: React.FC = () => {
                 </Card>
             }
             {
-                (tokenData?.basicInfo?.OtherCompanyAudit !== undefined) &&
-                <Card title="Audit Information">
-                    <Descriptions size="small" column={{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}>
-                        <Descriptions.Item labelStyle={{ width: 'fit-content !important' }} label="Company">{(tokenData?.basicInfo?.OtherCompanyAudit as any).companyName}</Descriptions.Item>
-                    </Descriptions>
-                    <div className="audit-link">
-                        <LaptopOutlined color='#b5b5c3'
-                        ></LaptopOutlined>
-                        <a style={{ fontSize: '14px' }} target="__blank"
-                            className="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2"
-                            href={(tokenData?.basicInfo?.OtherCompanyAudit as any).auditLink}>Audit Link</a>
-                    </div>
-
-                </Card>
-            }
-            {
                 tokenData?.basicInfo?.royalProofAudit === undefined && (tokenData?.basicInfo?.OtherCompanyAudit === undefined) &&
                 <Card title='Audit Information'>
                     <span className="text-gray-800 fw-bold mb-5 fs-6">
-                        Audits provide more security to potential investors. If you need an audit for your project, contact <a href="mailto:support@royalproof.net" style={{ color: '#AADADF ' }}>RoyalProof</a>
+                        Audits provide more security to potential investors. If you need an audit for your project, contact <a href="https://t.me/RoyalProofAdmin" style={{ color: '#AADADF ' }}>RoyalProof</a>
                     </span>
-                </Card>
-            }
-            {
-                loadingState &&
-                <Card >
-                    <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                        <Spin />
-                    </div>
                 </Card>
             }
 
