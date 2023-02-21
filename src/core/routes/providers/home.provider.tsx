@@ -47,21 +47,21 @@ export const HomeProvider = (props: any) => {
         fetchCacheID()
             .then(res => {
                 const cacheid = res.data.customID;
-                const currentCacheId = localStorage.getItem('cacheid')
+                const currentCacheId = sessionStorage.getItem('cacheid')
                 // if (Number(currentCacheId) !== Number(cacheid)) {
                 if (currentCacheId !== cacheid) {
-                    localStorage.setItem('cacheid', cacheid);
+                    sessionStorage.setItem('cacheid', cacheid);
                     fetchFeaturedTokens();
                     fetchRecentlyAdded();
                     fetchLatestScams();
                     fetchPotentialScams();
                     fetchAmaAdded();
                 } else {
-                    const potentialScams = JSON.parse(localStorage.getItem('potentialScams') as string);
-                    const featuredTokens = JSON.parse(localStorage.getItem('featuredTokens') as string);
-                    const latestScams = JSON.parse(localStorage.getItem('latestScams') as string);
-                    const amaTokens = JSON.parse(localStorage.getItem('amaTokens') as string);
-                    const recentlyAdded = JSON.parse(localStorage.getItem('recentlyAdded') as string);
+                    const potentialScams = JSON.parse(sessionStorage.getItem('potentialScams') as string);
+                    const featuredTokens = JSON.parse(sessionStorage.getItem('featuredTokens') as string);
+                    const latestScams = JSON.parse(sessionStorage.getItem('latestScams') as string);
+                    const amaTokens = JSON.parse(sessionStorage.getItem('amaTokens') as string);
+                    const recentlyAdded = JSON.parse(sessionStorage.getItem('recentlyAdded') as string);
                     setPotentialScams(potentialScams);
                     setFeaturedTokens(featuredTokens);
                     setLatestScams(latestScams);
@@ -161,7 +161,7 @@ export const HomeProvider = (props: any) => {
     }
 
     const persistToken = (key, data) => {
-        localStorage.setItem(key, JSON.stringify(data));
+        sessionStorage.setItem(key, JSON.stringify(data));
     }
 
     return (
