@@ -53,13 +53,12 @@ const SearchAdressInput: React.FC = () => {
                 setAutoCompleteOptions(allTokens.map(token => (
                     {
                         label: <span>
-                            <img
-                                alt={''}
+                            <img alt={''}
                                 onError={({ currentTarget }) => {
                                     currentTarget.onerror = null; // prevents looping
                                     currentTarget.src = nophoto;
                                 }}
-                                width="25px" style={{ borderRadius: '100%', marginRight: '10px' }} src={token.logoPicture}></img>
+                                width="25px" style={{ borderRadius: '100%', marginRight: '10px' }} src={token.logoPicture}/>
                             <span style={{
                                 color: '#181c32',
                                 fontWeight: 600
