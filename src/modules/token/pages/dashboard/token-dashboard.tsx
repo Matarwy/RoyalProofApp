@@ -49,9 +49,7 @@ export const TokenDashboardComponent: React.FC = () => {
                 const tokenobj = new Token();
                 tokenobj.convertFrom(token)
                 setTokenData(tokenobj)
-                if (tokenobj.basicInfo !== undefined) {
 
-                }
             }
         } catch(e){
             console.log(e);
