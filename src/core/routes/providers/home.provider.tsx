@@ -93,12 +93,9 @@ export const HomeProvider = (props: any) => {
         axios.get('https://api.royalproof.net/network/upcomings').then(
             ({ data }) => {
                 const recentlyAddedResponse: FeaturedTokensResponse = data;
-                console.log("no error top");
                 const recentlyAdded = recentlyAddedResponse?.content?.Items.map(
-                    
                     tokenResponse => new FeaturedToken(tokenResponse)
                 )
-                console.log("no error bottom");
                 setRecentlyAdded(recentlyAdded)
                 setAllTokens([...allTokens, ...recentlyAdded])
                 persistToken('recentlyAdded', recentlyAdded);
